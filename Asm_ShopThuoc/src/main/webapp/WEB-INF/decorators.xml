@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+	<!-- Any urls that are excluded will never be decorated by Sitemesh -->
+	<excludes><!-- nếu như có cái url nào nằm trong cái excludes thí nó sẽ ko 
+			apply bất kì giao diện nào -->
+		<pattern>/api*</pattern>
+	</excludes>
+	<!-- apply Sitemesh default template -->
+	<decorator name="web" page="trangchu.jsp">
+		<pattern>/homeController</pattern>
+	</decorator>
+	<decorator name="login" page="tranglogin.jsp">
+		<pattern>/loginController</pattern>
+	</decorator>
+	<decorator name="productDetail" page="productDetail.jsp">
+		<pattern>/product-Detail</pattern>
+	</decorator>
+	<decorator name="cart" page="cart.jsp">
+		<pattern>/cart</pattern>
+	</decorator>
+
+	<decorator name="sanPham" page="sanpham.jsp">
+		<pattern>/sanPhamController</pattern>
+	</decorator>
+	<decorator name="checkOut" page="trangcheckout.jsp">
+		<pattern>/checkController</pattern>
+	</decorator>
+	<decorator name="admin" page="admin.jsp">
+		<pattern>/adminController</pattern>
+	</decorator>
+	<decorator name="caidat" page="caidat.jsp">
+		<pattern>/caidatController</pattern>
+	</decorator>
+	<decorator name="chitietgiaodich" page="chitietgiaodich.jsp">
+		<pattern>/chitietController</pattern>
+	</decorator>
+	<decorator name="hoso" page="hoso.jsp">
+		<pattern>/hosoController</pattern>
+	</decorator>
+	<decorator name="trogiup" page="trogiup.jsp">
+		<pattern>/trogiupController</pattern>
+	</decorator>
+	<decorator name="vi" page="vi.jsp">
+		<pattern>/viController</pattern>
+	</decorator>
+
+
+</decorators>
