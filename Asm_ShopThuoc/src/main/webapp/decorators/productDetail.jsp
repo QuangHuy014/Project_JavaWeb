@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+	rel="stylesheet">
+
+<!-- Icon Font Stylesheet -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link
+	href="<c:url value='/template/web/lib/lightbox/css/lightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/template/web/lib/owlcarousel/assets/owl.carousel.min.css'/>"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="<c:url value='/template/web/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="<c:url value='/template/web/css/style.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/css/style1.css'/>"
+	rel="stylesheet">
+</head>
+<body>
+	<%@ include file="/common/web/header.jsp"%>
+	<dec:body />
+	<%@ include file="/common/web/footer.jsp"%>
+</body>
+<!-- JavaScript Libraries -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<c:url value='/template/web/lib/easing/easing.min.js'/>"></script>
+<script
+	src="<c:url value='/template/web/lib/waypoints/waypoints.min.js'/>"></script>
+<script
+	src="<c:url value='/template/web/lib/lightbox/js/lightbox.min.js'/>"></script>
+<script
+	src="<c:url value='/template/web/lib/owlcarousel/owl.carousel.min.js'/>"></script>
+
+<!-- Template Javascript -->
+<script src="<c:url value='/template/web/js/main.js'/>"></script>
+</html>
