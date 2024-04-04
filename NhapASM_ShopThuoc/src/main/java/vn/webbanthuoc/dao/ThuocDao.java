@@ -2,18 +2,52 @@ package vn.webbanthuoc.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import vn.webbanthuoc.entity.Thuoc;
+import vn.webbanthuoc.util.JpaUtil;
 
-public interface ThuocDao {
-	Thuoc findById(String id);
+public class ThuocDao  implements IDao<Thuoc>{
 
-	List<Thuoc> findAll();
+	@Override
+	public void create(Thuoc entity) {
+		// TODO Auto-generated method stub
+		
+	}
 
-	List<Thuoc> findAll(int pageNumber, int pageSize);
+	@Override
+	public void update(Thuoc entity) {
+		// TODO Auto-generated method stub
+		
+	}
 
-	Thuoc create(Thuoc entity);
+	@Override
+	public Thuoc delete(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	Thuoc update(Thuoc entity);
+	@Override
+	public Thuoc findById(String id) {
+		 EntityManager em = JpaUtil.getEntityManager();
+		    String jpql = "SELECT s FROM Thuoc s WHERE s.idThuoc = :id";
+		    TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
+		    query.setParameter("id", id);
+		    return (Thuoc) query.getResultList();
+	
+	}
 
-	Thuoc delete(Thuoc entity);
+	@Override
+	public List<Thuoc> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }

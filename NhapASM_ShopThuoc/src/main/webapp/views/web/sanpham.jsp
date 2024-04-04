@@ -98,11 +98,23 @@
 
 												</div>
 												<div class="d-flex  justify-content-between ">
-													<a href="#" class="btn border rounded-pill px-3 me-3"
-														style="font-size: 13px"> Hộp lớn</a> <a href="#"
+										<%-- 	<form action="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}" method="POST"> --%>
+										
+													<!-- <a href="" class="btn border rounded-pill px-3 me-3"
+														style="font-size: 13px" > Tc</a> <a href="#"
 														class="btn border border-info rounded-pill px-1 text-info me-3"
-														style="font-size: 15px"><i
-														class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
+														style="font-size: 15px">
+														</a> -->
+														<a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}">Thêm giỏ thuốcc</a>
+														
+														
+														<!-- <i
+														class="fa fa-shopping-bag  text-info">Hộp lớn</i>  -->
+														
+													<input type="hidden" name="idThuoc" value="${user.idThuoc}">
+													<h3>${user.idThuoc}</h3> 
+								
+														  		<!-- </form>   -->
 												</div>
 
 

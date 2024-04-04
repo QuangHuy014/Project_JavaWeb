@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;	
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Thuoc")
@@ -207,6 +208,16 @@ public class Thuoc {
 
 	public void setDonVi(String donVi) {
 		this.donVi = donVi;
+	}
+    
+    @Transient
+    private int quantity = 1;
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 }
