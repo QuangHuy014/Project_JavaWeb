@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Sản Phẩm</title>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,9 +124,6 @@
 		</div>
 	</div>
 
-
-
-
 	<div class="container-fluid fruite py-5">
 		<div class="container ">
 
@@ -145,10 +143,13 @@
 										<ul class="list-group list-group-flush">
 
 											<li class="list-group-item mt-2 "><span
-												style="font-weight: bold;">Thương hiệu</span> <br> 
+												style="font-weight: bold;">Thương hiệu</span> <br> <!-- 	<form class="d-flex mt-2 mb-3" role="search">
+													<input class="form-control"  type="text" 
+														placeholder="Tìm kiếm theo tên" ng-model="searchTerm">
+												</form> -->
 
 												<form class="d-flex mt-2 mb-3"
-													action="/BanNhapASMThuoc/sanPhamController" method="get"
+													action="/BanNhapASMThuoc/sanPhamController" method="GET"
 													role="search">
 													<input class="form-control me-2"
 														placeholder="Tìm kiếm theo tên" type="text"
@@ -156,94 +157,55 @@
 													<button>Tìm kiếm</button>
 												</form></li>
 
+											<form action="/BanNhapASMThuoc/sanPhamController"
+												method="GET">
+												<li class="list-group-item"><span
+													style="font-weight: bold;">Giá sản phẩm</span> <br>
 
-											<li class="list-group-item"><span
-												style="font-weight: bold;">Giá sản phẩm</span> <br>
+													<div class="col-sm-12">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox"
+																name="chkNhonHon100" id="chk100"> <label
+																class="form-check-label" for="blueCheckbox">Nhỏ
+																hơn 100.000Đ</label>
+														</div>
 
-												<div class="col-sm-12">
-													<div class="form-check">
-														<input class="form-check-input" type="checkbox"> <label
-															class="form-check-label" for="blueCheckbox">Nhỏ
-															hơn 100.000Đ</label>
 													</div>
 
-												</div>
-
-
-												<div class="col-sm-12">
-													<div class="form-check">
-														<input class="form-check-input" type="checkbox"> <label
-															class="form-check-label" for="blueCheckbox">100.000Đ
-															- 200.000Đ</label>
+													<div class="col-sm-12">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox"
+																name="chkLonHon100NhoHon200" id="chk100to200"> <label
+																class="form-check-label" for="blueCheckbox">100.000Đ
+																- 200.000Đ</label>
+														</div>
 													</div>
 
-												</div>
+													<div class="col-sm-12">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox">
+															<label class="form-check-label" for="blueCheckbox">200.000Đ-500.000Đ</label>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox">
+															<label class="form-check-label" for="blueCheckbox">Trên
+																500.000Đ</label>
+														</div>
+													</div></li>
 
-												<div class="col-sm-12">
-													<div class="form-check">
-														<input class="form-check-input" type="checkbox"> <label
-															class="form-check-label" for="blueCheckbox">200.000Đ-500.000Đ</label>
-													</div>
-												</div>
-												<div class="col-sm-12">
-													<div class="form-check">
-														<input class="form-check-input" type="checkbox"> <label
-															class="form-check-label" for="blueCheckbox">Trên
-															500.000Đ</label>
-													</div>
-												</div></li>
+
+
+
+											</form>
+
 
 										</ul>
 									</div>
 								</div>
 
-								<div class="col-lg-12">
-									<div class="mb-3">
-										<div class="mt-lg-2">
-											<div class="card">
-												<div class="card-body" style="color: black;">
-													<span class="card-title ms-2 fw-bold "
-														style="color: black;">Lứa tuổi</span>
-													<div class="row">
-														<div class="ms-lg-2">
-															<div class="col-sm-12">
-																<div class="form-check">
-																	<input class="form-check-input" type="checkbox">
-																	<label class="form-check-label" for="redCheckbox">Trẻ
-																		em</label>
-																</div>
-															</div>
-
-															<div class="col-sm-12">
-																<div class="form-check">
-																	<input class="form-check-input" type="checkbox">
-																	<label class="form-check-label" for="blueCheckbox">Người
-																		trưởng thành</label>
-																</div>
-															</div>
-
-															<div class="col-sm-12">
-																<div class="form-check">
-																	<input class="form-check-input" type="checkbox">
-																	<label class="form-check-label" for="whiteCheckbox">Người
-																		cao tuổi</label>
-																</div>
-															</div>
-
-															<div class="col-sm-12">
-																<div class="form-check">
-																	<input class="form-check-input" type="checkbox">
-																	<label class="form-check-label" for="yellowCheckbox">Thiếu
-																		niên</label>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 								<div class="col-lg-12">
 									<h4 class="mb-3">Sản phẩm yêu thích</h4>
 									<div
@@ -333,29 +295,27 @@
 						<div class="col-lg-9">
 							<!-- Thuoc tinh -->
 
-							<form action="/sanPhamController" method="POST">
+							<form action="/BanNhapASMThuoc" method="GET">
 								<div class="d-flex justify-content-center ">
 									<div class="row col-md-12">
 										<div class="col-md-12 mb-4" style="color: black;">
-											<span style="font-weight: bold;">SẮP XẾP</span> <br> 
-											<span
+											<span style="font-weight: bold;">SẮP XẾP</span> <br> <span
 												class="me-3"> <input type="checkbox"
-												name="chkHangMoiConnect" id="chkHangMoi"> <label
-												for="chkHangMoi">HÀNG MỚI</label>
-											</span> 
-											
-											<span class="me-3"><input type="radio" name="sorting"
-												id="lowToHigh" value="lowToHigh">TỪ THẤP LÊN CAO</span> 
-												<span><input
-												type="radio" name="OptionHightoLow" id="highToLow" >TỪ
-												CAO XUỐNG THẤP</span>
+												name="chkHangMoiConnect" id="chkHangMoi"
+												onclick="loadSanPhamMoi()"> <label for="chkHangMoi">HÀNG
+													MỚI</label>
+											</span> <span class="me-3"><input type="checkbox"
+												name="chkLowtoHigh" id="lowToHigh">TỪ THẤP LÊN CAO</span> <span>
+												<input type="checkbox" name="chkHightoLow" id="highToLow">TỪ
+												CAO XUỐNG THẤP
+											</span>
 										</div>
 									</div>
 
 								</div>
 							</form>
 
-							<div class="row g-5 justify-content-center">
+							<div id="content" class="row g-5 justify-content-center">
 								<!-- 1 -->
 								<c:forEach var="user" items="${ListUser}">
 									<div class="col-md-6 col-lg-6 col-xl-4">
@@ -365,7 +325,7 @@
 											<div
 												class="fruite-img d-flex justify-content-center align-items-center">
 												<a
-													href="/BanNhapASMThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+													href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
 													src="${user.hinh}" class="img-fluid w-100 rounded-top"
 													alt=""></a>
 											</div>
@@ -375,65 +335,50 @@
 											<div class="p-2 ms-3">
 												<input type="hidden" name="idThuoc" placeholder="Username"
 													value="${user.idThuoc}" />
-												<%--  ID: ${user.idThuoc} --%>
-
 												<h6 style="font-weight: bold;">${user.ten}</h6>
 												<h6 class="text-truncate">${user.congDung}</h6>
 												<div
 													class=" justify-content-between flex-lg-wrap align-items-center">
-
 													<div class="d-flex  justify-content-between flex-lg-wrap">
 														<label class=""
 															style="font-size: 18px; font-weight: bold; color: #3153DC;">${user.gia}đ/Hộp</label>
 														<p class="text-decoration-line-through  mt-1 me-3"
 															style="font-size: 15px; color: black;">2.235.000đ
 															/Hộp</p>
-
 													</div>
 													<div class="d-flex  justify-content-between ">
 														<a href="#" class="btn border rounded-pill px-3 me-3"
 															style="font-size: 13px"> ${user.donVi}</a> 
-																														
-															<a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}"
+															<a
+															href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}"
 															class="btn border border-info rounded-pill px-1 text-info me-3"
 															style="font-size: 15px"><i
 															class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
 													</div>
-
-
 												</div>
-
-
-
 											</div>
 										</div>
 									</div>
 								</c:forEach>
-								<!--2  -->
-
-							<div class="col-12">
-									<div class="pagination d-flex justify-content-center mt-5">
-										<c:set var="totalPages" value="${TotalPages}" />
-										<c:set var="currentPage" value="${CurrentPage}" />
-										<c:if test="${currentPage > 0}">
-											<a class="rounded" href="?page=${currentPage - 1}">Previous</a>
-										</c:if>
-										<c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
-											<a class="rounded" href="?page=${loop.index}">${loop.index + 1}</a>
-
-										</c:forEach>
-
-										<c:if test="${currentPage < totalPages - 1}">
-											<a class="rounded" href="?page=${currentPage + 1}">Next</a>
-										</c:if>
-
-									</div>
-								</div> 
-
 							</div>
+							<div class="col-12">
+								<div class="pagination d-flex justify-content-center mt-5">
+									<c:set var="totalPages" value="${TotalPages}" />
+									<c:set var="currentPage" value="${CurrentPage}" />
+									<c:if test="${currentPage > 0}">
+										<a class="rounded" href="?page=${currentPage - 1}">Previous</a>
+									</c:if>
+									<c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+										<a class="rounded" href="?page=${loop.index}">${loop.index + 1}</a>
 
+									</c:forEach>
 
+									<c:if test="${currentPage < totalPages - 1}">
+										<a class="rounded" href="?page=${currentPage + 1}">Next</a>
+									</c:if>
 
+								</div>
+							</div>
 
 						</div>
 					</div>
@@ -441,65 +386,171 @@
 			</div>
 		</div>
 	</div>
+	</div>
 
 	<%@ include file="/common/web/footer.jsp"%>
 
-<script>
-document.getElementById("chkHangMoi").addEventListener("change", function(event) {
-    // Ngăn chặn hành vi mặc định của form
-    event.preventDefault();
-    
-    // Kiểm tra xem checkbox có được chọn hay không
-    if (this.checked) {
-        // Tạo một đối tượng XMLHttpRequest
-        var xhr = new XMLHttpRequest();
-        
-        // Xác định phương thức và URL của yêu cầu
-        xhr.open("POST", "/BanNhapASMThuoc/sanPhamController", true);
-        
-        // Xác định hàm xử lý được gọi khi yêu cầu hoàn thành
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Cập nhật nội dung của trang web với dữ liệu nhận được từ máy chủ
-                document.getElementById("content").innerHTML = xhr.responseText;
-            }
-        };
-        
-        // Gửi yêu cầu
-        xhr.send();
-    }
-});
-
-
-</script>
-
-
 	<!-- <script>
-	document.getElementById("chkHangMoi").addEventListener("change", function() {
-	    // Kiểm tra xem checkbox có được chọn hay không
-	    if (this.checked) {
-	        // Tạo một biến form
-	        var form = document.createElement("form");
-	        // Đặt action của form là URL của controller
-	        form.setAttribute("action", "/BanNhapASMThuoc/sanPhamController");
-	        // Đặt phương thức của form là POST
-	        form.setAttribute("method", "POST");
-	        // Tạo một input ẩn với tên là chkHangMoi và giá trị là true
-	        var input = document.createElement("input");
-	        input.setAttribute("type", "hidden");
-	        input.setAttribute("name", "chkHangMoiConnect");
-	        input.setAttribute("value", "true");
-	        // Thêm input vào form
-	        form.appendChild(input);
-	        // Thêm form vào body của trang web
-	        document.body.appendChild(form);
-	        // Gửi form
-	        form.submit();
-	    }
-	});
+							function SanPhamMoiNhat() {
+							    $.ajax({
+							        url: "/NhapASM_ShopThuoc/sanPhamController",
+							        type: "POST",
+							        data: {
+							            chkHangMoiConnect: true
+							        },
+							        success: function(response) {
+							            $('#content').html(response);
+							            console.log("Thành công:");
+							        },
+							        error: function(xhr) {
+							            console.log("Lỗi:", xhr);
+							        }
+							    });
+							}
 
-	</script>  -->
-	
+							</script> -->
+	<script>
+		document.getElementById("chk100to200").addEventListener(
+				"change",
+				function() {
+					// Kiểm tra xem checkbox có được chọn hay không
+					if (this.checked) {
+						// Tạo một biến form
+						var form = document.createElement("form");
+						// Đặt action của form là URL của controller
+						form.setAttribute("action",
+								"/NhapASM_ShopThuoc/sanPhamController");
+						// Đặt phương thức của form là POST
+						form.setAttribute("method", "POST");
+						// Tạo một input ẩn với tên là chkHangMoi và giá trị là true
+						var input = document.createElement("input");
+						input.setAttribute("type", "hidden");
+						input.setAttribute("name", "chkLonHon100NhoHon200");
+						input.setAttribute("value", "true");
+						// Thêm input vào form
+						form.appendChild(input);
+						// Thêm form vào body của trang web
+						document.body.appendChild(form);
+						// Gửi form
+						form.submit();
+					}
+				});
+	</script>
+
+
+	<script>
+		document.getElementById("chk100").addEventListener(
+				"change",
+				function() {
+					// Kiểm tra xem checkbox có được chọn hay không
+					if (this.checked) {
+						// Tạo một biến form
+						var form = document.createElement("form");
+						// Đặt action của form là URL của controller
+						form.setAttribute("action",
+								"/NhapASM_ShopThuoc/sanPhamController");
+						// Đặt phương thức của form là POST
+						form.setAttribute("method", "POST");
+						// Tạo một input ẩn với tên là chkHangMoi và giá trị là true
+						var input = document.createElement("input");
+						input.setAttribute("type", "hidden");
+						input.setAttribute("name", "chkNhonHon100");
+						input.setAttribute("value", "true");
+						// Thêm input vào form
+						form.appendChild(input);
+						// Thêm form vào body của trang web
+						document.body.appendChild(form);
+						// Gửi form
+						form.submit();
+					}
+				});
+	</script>
+
+
+	<script>
+		document.getElementById("lowToHigh").addEventListener(
+				"change",
+				function() {
+					// Kiểm tra xem checkbox có được chọn hay không
+					if (this.checked) {
+						// Tạo một biến form
+						var form = document.createElement("form");
+						// Đặt action của form là URL của controller
+						form.setAttribute("action",
+								"/NhapASM_ShopThuoc/sanPhamController");
+						// Đặt phương thức của form là POST
+						form.setAttribute("method", "POST");
+						// Tạo một input ẩn với tên là chkHangMoi và giá trị là true
+						var input = document.createElement("input");
+						input.setAttribute("type", "hidden");
+						input.setAttribute("name", "chkLowtoHigh");
+						input.setAttribute("value", "true");
+						// Thêm input vào form
+						form.appendChild(input);
+						// Thêm form vào body của trang web
+						document.body.appendChild(form);
+						// Gửi form
+						form.submit();
+					}
+				});
+	</script>
+
+	<script>
+		document.getElementById("highToLow").addEventListener(
+				"change",
+				function() {
+					// Kiểm tra xem checkbox có được chọn hay không
+					if (this.checked) {
+						// Tạo một biến form
+						var form = document.createElement("form");
+						// Đặt action của form là URL của controller
+						form.setAttribute("action",
+								"/NhapASM_ShopThuoc/sanPhamController");
+						// Đặt phương thức của form là POST
+						form.setAttribute("method", "POST");
+						// Tạo một input ẩn với tên là chkHangMoi và giá trị là true
+						var input = document.createElement("input");
+						input.setAttribute("type", "hidden");
+						input.setAttribute("name", "chkHightoLow");
+						input.setAttribute("value", "true");
+						// Thêm input vào form
+						form.appendChild(input);
+						// Thêm form vào body của trang web
+						document.body.appendChild(form);
+						// Gửi form
+						form.submit();
+					}
+				});
+	</script>
+
+	<script>
+		document.getElementById("chkHangMoi").addEventListener(
+				"change",
+				function() {
+					// Kiểm tra xem checkbox có được chọn hay không
+					if (this.checked) {
+						// Tạo một biến form
+						var form = document.createElement("form");
+						// Đặt action của form là URL của controller
+						form.setAttribute("action",
+								"/NhapASM_ShopThuoc/sanPhamController");
+						// Đặt phương thức của form là POST
+						form.setAttribute("method", "POST");
+						// Tạo một input ẩn với tên là chkHangMoi và giá trị là true
+						var input = document.createElement("input");
+						input.setAttribute("type", "hidden");
+						input.setAttribute("name", "chkHangMoiConnect");
+						input.setAttribute("value", "true");
+						// Thêm input vào form
+						form.appendChild(input);
+						// Thêm form vào body của trang web
+						document.body.appendChild(form);
+						// Gửi form
+						form.submit();
+					}
+				});
+	</script>
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script
