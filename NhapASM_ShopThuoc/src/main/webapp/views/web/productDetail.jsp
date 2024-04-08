@@ -1,12 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+	rel="stylesheet">
+
+<!-- Icon Font Stylesheet -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+	rel="stylesheet">
+
+<!-- Libraries Stylesheet -->
+<link
+	href="<c:url value='/template/web/lib/lightbox/css/lightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/template/web/lib/owlcarousel/assets/owl.carousel.min.css'/>"
+	rel="stylesheet">
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="<c:url value='/template/web/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Stylesheet -->
+<link href="<c:url value='/template/web/css/style.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/css/style1.css'/>"
+	rel="stylesheet">
+
+<style>
+.multi-line {
+	max-height: 3em;
+	/* Độ cao tối đa là 3 dòng (tùy chỉnh theo nhu cầu) */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	/* Hiển thị dấu chấm (...) khi văn bản bị cắt */
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	/* Số dòng tối đa */
+	-webkit-box-orient: vertical;
+}
+</style>
 </head>
 <body>
+
+	<%@ include file="/common/web/header.jsp"%>
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">Shop Detail</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
@@ -26,16 +75,15 @@
 					<div class="row g-4">
 						<div class="col-lg-6">
 							<div class="border rounded">
-								<a href="#"> <img
-									src="https://cdn.nhathuoclongchau.com.vn/unsafe/373x0/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00032918_glucosamine_and_chondroitin_jpanwell_120v_9745_61a5_large_41ffa86dc1.JPG"
-									class="img-fluid rounded " alt="Image">
-								</a>
+								<a href="#"><img src="${thuoc.hinh}"
+									class="img-fluid rounded" style="width: 500px; height: 500px;"
+									alt="Image"> </a> 
+									<input type="hidden" name="idThuoc"
+									placeholder="Username" value="${thuoc.idThuoc}" />
 							</div>
 						</div>
 						<div class="col-lg-6">
-							<h4 class="fw-bold mb-3">Viên uống Glucosamine And
-								Chondroitin Jpanwell hỗ trợ bổ sung chất nhờn dịch khớp (120
-								viên)</h4>
+							<h4 class="fw-bold mb-3">${thuoc.ten}</h4>
 							<p class="mb-3">Danh muc: Cơ xương khớp</p>
 							<div class="content_recoment d-flex justify-content-around">
 								<p style="font: bold;">00032918</p>
@@ -48,7 +96,7 @@
 								<a href="">32 đánh giá</a> <a href="">272 bình luận</a>
 							</div>
 							<h5 class="fw-bold mb-3" style="display: flex;">
-								768.000đ /
+								${thuoc.gia}đ/
 								<p>Hộp</p>
 							</h5>
 							<h5 class="text-decoration-line-through">960.000đ</h5>
@@ -59,7 +107,7 @@
 							<p class="mb-4">Canxi từ vỏ sò, Glucosamine, Collagen,
 								Chondroitin, Collagen type II, Hyaluronic acid, Vitamin B12,
 								Vitamin B1, Elastin</p>
-							<div class="input-group quantity mb-5" style="width: 100px;">
+							<div class="input-group quantity " style="width: 160px;">
 								<div class="input-group-btn">
 									<button
 										class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -68,18 +116,20 @@
 								</div>
 								<input type="text"
 									class="form-control form-control-sm text-center border-0"
-									value="1">
+									value="1" style="width: 60px">
 								<div class="input-group-btn">
 									<button
 										class="btn btn-sm btn-plus rounded-circle bg-light border">
 										<i class="fa fa-plus"></i>
 									</button>
 								</div>
+
+
 							</div>
-							<a href="#"
+							<a href="/NhapASM_ShopThuoc/addToCart1?id=${thuoc.idThuoc}"
 								class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
 								style="background-color: #2167dd;"><i
-								class="fa fa-shopping-bag me-2 "></i> Add to cart</a>
+								class="fa fa-shopping-bag me-2 "></i> Thêm giỏ thuốc</a>
 						</div>
 						<div class="col-lg-12">
 							<nav>
@@ -133,9 +183,7 @@
 										những người mắc bệnh lý về xương khớp. Sản phẩm được sản xuất
 										tại Nhật Bản và là một trong những TPCN có hàm lượng
 										glucosamine cao nhất.</p>
-									<img
-										src="https://cdn.nhathuoclongchau.com.vn/unsafe/800x0/filters:quality(95)/https://cms-prod.s3-sgn09.fptcloud.com/Thanh_Phan_Vien_Uong_Bo_Xuong_Khop_Glucosamine_And_Chondroitin_Jpanwell_120_Vien_f6c2274c93.jpg"
-										class="img-fluid" alt="">
+									<img src="${thuoc.hinh}" class="img-fluid" alt="">
 								</div>
 								<div class="tab-pane fade" id="nav-thanhphan" role="tabpanel"
 									aria-labelledby="nav-thanhphan-tab">
@@ -232,11 +280,8 @@
 								</div>
 								<div class="tab-pane fade" id="nav-about" role="tabpanel"
 									aria-labelledby="nav-about-tab">
-									<h3>Công dụng của Viên uống Glucosamine And Chondroiti</h3>
-									<p style="font-size: 20px;">Glucosamine And Chondroitin
-										JpanWell hỗ trợ bổ sung chất nhờn dịch khớp, giúp khớp vận
-										động linh hoạt. Hỗ trợ giảm đau khớp, khô khớp do viêm khớp và
-										thoái hóa khớp.</p>
+									<h3>${thuoc.ten}</h3>
+									<p style="font-size: 20px;">${thuoc.congDung}</p>
 								</div>
 								<div class="tab-pane fade" id="nav-mission" role="tabpanel"
 									aria-labelledby="nav-mission-tab">
@@ -321,12 +366,7 @@
 				<div class="col-lg-4 col-xl-3">
 					<div class="row g-4 fruite">
 						<div class="col-lg-12">
-							<div class="input-group w-100 mx-auto d-flex mb-4">
-								<input type="search" class="form-control p-3"
-									placeholder="keywords" aria-describedby="search-icon-1">
-								<span id="search-icon-1" class="input-group-text p-3"><i
-									class="fa fa-search"></i></span>
-							</div>
+							<div class="input-group w-100 mx-auto d-flex mb-4"></div>
 							<div class="mb-4">
 								<h4>Categories</h4>
 								<ul class="list-unstyled fruite-categorie">
@@ -361,8 +401,7 @@
 										<div class="d-flex justify-content-between fruite-name">
 											<a href="#" style="font-size: 20px; color: #2167dd;""><i
 												class="fas fa-pills me-2" style="color: coral;"></i></i>Thiet Bi
-												y
-												<template></template></a> <span>(5)</span>
+												y </a> <span>(5)</span>
 										</div>
 									</li>
 								</ul>
@@ -573,6 +612,22 @@
 
 		</div>
 	</div>
+	<%@ include file="/common/web/footer.jsp"%>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="<c:url value='/template/web/lib/easing/easing.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/lib/waypoints/waypoints.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/lib/lightbox/js/lightbox.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/lib/owlcarousel/owl.carousel.min.js'/>"></script>
+
+	<!-- Template Javascript -->
+	<script src="<c:url value='/template/web/js/main.js'/>"></script>
+
 
 </body>
 </html>

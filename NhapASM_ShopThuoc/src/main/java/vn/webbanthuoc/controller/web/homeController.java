@@ -1,6 +1,7 @@
 package vn.webbanthuoc.controller.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,13 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import vn.webbanthuoc.dao.ThuocDao;
+import vn.webbanthuoc.entity.Thuoc;
+
 /**
  * Servlet implementation class homeController
  */
 @WebServlet({"/homeController","/product-Detail","/client/addToCart"})
 public class homeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	ThuocDao thuocDao = new ThuocDao();
   
     public homeController() {
         super();
@@ -27,9 +31,9 @@ public class homeController extends HttpServlet {
 		try {
 			switch (action) {
 			case "/homeController": {
-				RequestDispatcher rd = request.getRequestDispatcher("/views/web/trangchu.jsp");
-				rd.forward(request, response);
+				HomeController(request, response);
 				break;
+
 			}
 			case "/product-Detail": {
 				RequestDispatcher rd = request.getRequestDispatcher("/views/web/sanpham.jsp");
@@ -53,6 +57,16 @@ public class homeController extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+
+	private void HomeController(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getMethod().equalsIgnoreCase("get")) {
+			List<Thuoc>ListSp=thuocDao.Filter6Product();
+			request.setAttribute("ListSP",ListSp);
+			RequestDispatcher rd = request.getRequestDispatcher("/views/web/trangchu.jsp");
+			rd.forward(request, response);
+		}
+	
 	}
 
 	/**
