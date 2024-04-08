@@ -14,11 +14,6 @@ import vn.webbanthuoc.dao.NhanVienDao;
 import vn.webbanthuoc.entity.KhachHang;
 import vn.webbanthuoc.entity.NhanVien;
 
-
-
-/**
- * Servlet implementation class doimatkhauController
- */
 @WebServlet({"/doiMatKhau", "/DangNhapchinh"})
 public class doiMatKhauController extends HttpServlet {
     private static final long serialVersionUID = 1L;
