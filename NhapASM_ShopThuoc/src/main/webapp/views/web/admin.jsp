@@ -1,9 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@include file="/common/taglib.jsp"%>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="">
+<meta name="author" content="Tooplate">
+
+<title>Mini Finance Dashboard Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/apexcharts.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/bootstrap-icon.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/template/web/admin/css/tooplate-mini-finance.css'/>"
+	rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -549,85 +572,94 @@
 
 	<!-- JAVASCRIPT FILES -->
 
-	<script type="text/javascript">
-            var options = {
-              series: [13, 43, 22],
-              chart: {
-              width: 380,
-              type: 'pie',
-            },
-            labels: ['Balance', 'Expense', 'Credit Loan',],
-            responsive: [{
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200
-                },
-                legend: {
-                  position: 'bottom'
-                }
-              }
-            }]
-            };
 
-            var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
-            chart.render();
-        </script>
+	<script src="<c:url value='/template/web/admin/js/apexcharts.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/admin/js/bootstrap.bundle.min.js'/>"></script>
+	<script src="<c:url value='/template/web/admin/js/custom.js'/>"></script>
+	<script src="<c:url value='/template/web/admin/js/jquery.min.js'/>"></script>
 
 	<script type="text/javascript">
-            var options = {
-              series: [{
-              name: 'Income',
-              data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-            }, {
-              name: 'Expense',
-              data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-            }, {
-              name: 'Transfer',
-              data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-            }],
-              chart: {
-              type: 'bar',
-              height: 350
-            },
-            plotOptions: {
-              bar: {
-                horizontal: false,
-                columnWidth: '55%',
-                endingShape: 'rounded'
-              },
-            },
-            dataLabels: {
-              enabled: false
-            },
-            stroke: {
-              show: true,
-              width: 2,
-              colors: ['transparent']
-            },
-            xaxis: {
-              categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-            },
-            yaxis: {
-              title: {
-                text: '$ (thousands)'
-              }
-            },
-            fill: {
-              opacity: 1
-            },
-            tooltip: {
-              y: {
-                formatter: function (val) {
-                  return "$ " + val + " thousands"
-                }
-              }
-            }
-            };
+		var options = {
+			series : [ 13, 43, 22 ],
+			chart : {
+				width : 380,
+				type : 'pie',
+			},
+			labels : [ 'Balance', 'Expense', 'Credit Loan', ],
+			responsive : [ {
+				breakpoint : 480,
+				options : {
+					chart : {
+						width : 200
+					},
+					legend : {
+						position : 'bottom'
+					}
+				}
+			} ]
+		};
 
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
-        </script>
+		var chart = new ApexCharts(document.querySelector("#pie-chart"),
+				options);
+		chart.render();
+	</script>
+
+	<script type="text/javascript">
+		var options = {
+			series : [ {
+				name : 'Income',
+				data : [ 44, 55, 57, 56, 61, 58, 63, 60, 66 ]
+			}, {
+				name : 'Expense',
+				data : [ 76, 85, 101, 98, 87, 105, 91, 114, 94 ]
+			}, {
+				name : 'Transfer',
+				data : [ 35, 41, 36, 26, 45, 48, 52, 53, 41 ]
+			} ],
+			chart : {
+				type : 'bar',
+				height : 350
+			},
+			plotOptions : {
+				bar : {
+					horizontal : false,
+					columnWidth : '55%',
+					endingShape : 'rounded'
+				},
+			},
+			dataLabels : {
+				enabled : false
+			},
+			stroke : {
+				show : true,
+				width : 2,
+				colors : [ 'transparent' ]
+			},
+			xaxis : {
+				categories : [ 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
+						'Sep', 'Oct' ],
+			},
+			yaxis : {
+				title : {
+					text : '$ (thousands)'
+				}
+			},
+			fill : {
+				opacity : 1
+			},
+			tooltip : {
+				y : {
+					formatter : function(val) {
+						return "$ " + val + " thousands"
+					}
+				}
+			}
+		};
+
+		var chart = new ApexCharts(document.querySelector("#chart"), options);
+		chart.render();
+	</script>
 
 </body>
 </html>

@@ -1,76 +1,91 @@
 package vn.webbanthuoc.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "KhachHang")
+//@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u order by u.TenDangNhap")
 public class KhachHang {
-
+    private static final long serialVersionUID = 1L;
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IDKhachHang")
-    private int idKhachHang;
+    private int idkhachhang;
+    
+    
+    @Column(name = "TenDangNhap")
+    private String tendangnhap;
 
-    @Column(name = "TenDangNhap", nullable = false)
-    private String tenDangNhap;
+    @Column(name = "MatKhau")
+    private String matkhau;
 
-    @Column(name = "MatKhau", nullable = false)
-    private String matKhau;
-
-    @Column(name = "Ten", nullable = false)
+    @Column(name = "Ten")
     private String ten;
 
-    @Column(name = "GioiTinh", nullable = false)
-    private boolean gioiTinh;
+    @Column(name = "GioiTinh")
+    private boolean gioitinh;
 
-    // Constructors, getters, and setters
     public KhachHang() {
+        super();
     }
 
-    public KhachHang(String tenDangNhap, String matKhau, String ten, boolean gioiTinh) {
-        this.tenDangNhap = tenDangNhap;
-        this.matKhau = matKhau;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-    }
+	public KhachHang(String tendangnhap, String matkhau, String ten, boolean gioitinh) {
+		super();
+		this.tendangnhap = tendangnhap;
+		this.matkhau = matkhau;
+		this.ten = ten;
+		this.gioitinh = gioitinh;
+	}
 
-    public int getIdKhachHang() {
-        return idKhachHang;
-    }
+	public String getTendangnhap() {
+		return tendangnhap;
+	}
 
-    public void setIdKhachHang(int idKhachHang) {
-        this.idKhachHang = idKhachHang;
-    }
+	public void setTendangnhap(String tendangnhap) {
+		this.tendangnhap = tendangnhap;
+	}
 
-    public String getTenDangNhap() {
-        return tenDangNhap;
-    }
+	public String getMatkhau() {
+		return matkhau;
+	}
 
-    public void setTenDangNhap(String tenDangNhap) {
-        this.tenDangNhap = tenDangNhap;
-    }
+	public void setMatkhau(String matkhau) {
+		this.matkhau = matkhau;
+	}
 
-    public String getMatKhau() {
-        return matKhau;
-    }
+	public String getTen() {
+		return ten;
+	}
 
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
 
-    public String getTen() {
-        return ten;
-    }
+	public boolean isGioitinh() {
+		return gioitinh;
+	}
 
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
+	public void setGioitinh(boolean gioitinh) {
+		this.gioitinh = gioitinh;
+	}
 
-    public boolean isGioiTinh() {
-        return gioiTinh;
-    }
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+    
 
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
+	
+
+	
+
+   
 }
