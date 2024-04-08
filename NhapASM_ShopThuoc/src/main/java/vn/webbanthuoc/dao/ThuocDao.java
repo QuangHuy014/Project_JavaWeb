@@ -1,28 +1,17 @@
 package vn.webbanthuoc.dao;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-
-
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import vn.webbanthuoc.entity.Thuoc;
 import vn.webbanthuoc.util.JpaUtil;
 
-
 public class ThuocDao {
-
-	public List<Thuoc> findByFullname(String fullname) {
-		EntityManager em = JpaUtil.getEntityManager();
-		String jpaQuery = "SELECT u FROM Thuoc u WHERE u.ten LIKE :ten";
-		TypedQuery<Thuoc> query = em.createQuery(jpaQuery, Thuoc.class);
-		query.setParameter("ten", "%" + fullname + "%");
-		return query.getResultList();
-	}
 
 	public List<Thuoc> findAll() {
 		EntityManager em = JpaUtil.getEntityManager();
@@ -59,11 +48,39 @@ public class ThuocDao {
 		return query.getResultList();
 	}
 
+	public List<Thuoc> findPriceToQuality100() {
+		EntityManager em = JpaUtil.getEntityManager();
+		String jpql = "SELECT s FROM Thuoc s WHERE s.gia <= :gia ORDER BY s.gia";
+		TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
+		query.setParameter("gia", 100000f);
+		return query.getResultList();
+
+	}
+
+	public List<Thuoc> findPriceInRange100To200() {
+		EntityManager em = JpaUtil.getEntityManager();
+		String jpql = "SELECT s FROM Thuoc s WHERE s.gia > :giaMin AND s.gia < :giaMax ORDER BY s.gia";
+
+		TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
+		query.setParameter("giaMin", 100000f);
+		query.setParameter("giaMax", 200000f);
+		return query.getResultList();
+	}
+
 	public List<Thuoc> findPriceHigh() {
-	    EntityManager em = JpaUtil.getEntityManager();
-	    String jpql = "SELECT s FROM Thuoc s ORDER BY s.gia DESC";
-	    TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
-	    return query.getResultList();
+		EntityManager em = JpaUtil.getEntityManager();
+		String jpql = "SELECT s FROM Thuoc s ORDER BY s.gia DESC";
+		TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
+		return query.getResultList();
+	}
+
+	
+
+	public List<Thuoc> findPriceLow() {
+		EntityManager em = JpaUtil.getEntityManager();
+		String jpql = "SELECT s FROM Thuoc s ORDER BY s.gia ASC";
+		TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
+		return query.getResultList();
 	}
 
 	public long countAll() {
@@ -73,10 +90,36 @@ public class ThuocDao {
 	}
 
 	public Thuoc findById(String id) {
+	    EntityManager em = JpaUtil.getEntityManager();
+	    TypedQuery<Thuoc> query = em.createQuery("SELECT t FROM Thuoc t WHERE t.id = :id", Thuoc.class);
+	    query.setParameter("id", id);
+	    Thuoc entity = query.getSingleResult();
+	    return entity;
+	}
+	
+	public List<Thuoc> Filter3Product() {
+	    EntityManager em = JpaUtil.getEntityManager();
+	    String jpql = "SELECT t FROM Thuoc t ORDER BY t.gia DESC";
+	    TypedQuery<Thuoc> query = em.createQuery(jpql, Thuoc.class);
+	    query.setMaxResults(3); // Chỉ lấy 3 kết quả đầu tiên
+	    return query.getResultList();
+	}
+	public List<Thuoc> findByFullname(String fullname) {
 		EntityManager em = JpaUtil.getEntityManager();
-		Thuoc entity = em.find(Thuoc.class, id);
-		return entity;
+		String jpaQuery = "SELECT u FROM Thuoc u WHERE u.ten LIKE :ten";
+		TypedQuery<Thuoc> query = em.createQuery(jpaQuery, Thuoc.class);
+		query.setParameter("ten", "%" + fullname + "%");
+		return query.getResultList();
+	}
+	public List<Thuoc>Filter6Product(){
+		EntityManager em=JpaUtil.getEntityManager();
+		String jpql="SELECT t from Thuoc t ";
+		TypedQuery<Thuoc> query=em.createQuery(jpql,Thuoc.class);
+		query.setMaxResults(6);
+		return query.getResultList();
 	}
 
-}
 
+
+
+}
