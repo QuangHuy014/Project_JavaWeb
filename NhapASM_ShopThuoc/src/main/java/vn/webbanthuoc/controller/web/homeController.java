@@ -55,14 +55,17 @@ public class homeController extends HttpServlet {
 				throw new IllegalArgumentException("Unexpected value: " + action);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+		
 		}
 	}
 
 	private void HomeController(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getMethod().equalsIgnoreCase("get")) {
-			List<Thuoc>ListSp=thuocDao.Filter6Product();
-			request.setAttribute("ListSP",ListSp);
+			List<Thuoc>ListSp1=thuocDao.Filter6Product();
+			request.setAttribute("ListSP",ListSp1);
+			List<Thuoc>ListSp2=thuocDao.Fillter4Productlike1();
+			request.setAttribute("ListSP2", ListSp2);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/trangchu.jsp");
 			rd.forward(request, response);
 		}

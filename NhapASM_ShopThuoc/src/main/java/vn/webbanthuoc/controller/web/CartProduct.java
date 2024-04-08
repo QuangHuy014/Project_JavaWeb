@@ -55,10 +55,8 @@ public class CartProduct extends HttpServlet {
 					cartThuoc.remove(thuocId);
 				}else
 					cartThuoc.get(thuocId).setQuantity( cartThuoc.get(thuocId).getQuantity() - 1);
-
 			}
-			
-			
+				
 		}
 		req.getSession().setAttribute("cartThuocss", cartThuoc);
 		req.setAttribute("countCellPhones", cartThuoc.size());
