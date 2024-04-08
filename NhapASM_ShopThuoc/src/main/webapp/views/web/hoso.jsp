@@ -1,9 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@include file="/common/taglib.jsp"%>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap"
+	rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/apexcharts.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/bootstrap-icon.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/template/web/admin/css/tooplate-mini-finance.css'/>"
+	rel="stylesheet">
 
 </head>
 
@@ -326,7 +349,11 @@
 		</div>
 	</div>
 
-	<!-- JAVASCRIPT FILES -->
+	<script src="<c:url value='/template/web/admin/js/apexcharts.min.js'/>"></script>
+	<script
+		src="<c:url value='/template/web/admin/js/bootstrap.bundle.min.js'/>"></script>
+	<script src="<c:url value='/template/web/admin/js/custom.js'/>"></script>
+	<script src="<c:url value='/template/web/admin/js/jquery.min.js'/>"></script>
 
 </body>
 </html>
