@@ -95,11 +95,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.5.7.Final</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
-		</dependency>
+		
 		<!-- json -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -147,6 +143,12 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>9.4.0.jre8</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version> <!-- hoặc phiên bản tương thích hơn -->
+		</dependency>
+
 
 
 	</dependencies>
