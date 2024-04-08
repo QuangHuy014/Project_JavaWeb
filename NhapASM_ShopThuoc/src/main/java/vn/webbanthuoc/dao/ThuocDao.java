@@ -118,6 +118,14 @@ public class ThuocDao {
 		query.setMaxResults(6);
 		return query.getResultList();
 	}
+	public List<Thuoc>Fillter4Productlike1(){
+		EntityManager em=JpaUtil.getEntityManager();
+		String jpql="Select t from Thuoc t ORDER BY t.gia ASC";
+		TypedQuery<Thuoc> query=em.createQuery(jpql,Thuoc.class);
+		query.setMaxResults(4);
+		return query.getResultList();
+		
+	}
 
 
 
