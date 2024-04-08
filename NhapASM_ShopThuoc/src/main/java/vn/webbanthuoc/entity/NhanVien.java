@@ -1,150 +1,151 @@
 package vn.webbanthuoc.entity;
 
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CreationTimestamp;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "NhanVien")
+//@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u order by u.idkhachhang")
 public class NhanVien {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDMaNV")
-    private int idMaNV;
-
-    @Column(name = "Ten", nullable = false)
+    @Column(name = "IDMaNv")
+    private int idmanv;
+    
+    @Column(name = "Ten")
     private String ten;
 
-    @Column(name = "Age", nullable = false)
+    @Column(name = "Age")	
     private int age;
 
-    
-    @Column(name = "Birthday", nullable = false)
-    @CreationTimestamp
+    @Column(name = "Birthday")
     private Date birthday;
 
-    @Column(name = "VaiTro", nullable = false)
-    private boolean vaiTro;
+    @Column(name = "VaiTro")
+    private boolean vaitro;
+    
+    @Column(name = "DiaChi")
+    private String diachi;
+    
+    @Column(name = "GioiTinh")
+    private boolean gioitinh;
+    
+    @Column(name = "TrangThai")
+    private boolean trangthai;
+    
+    @Column(name = "MatKhau")
+    private String matkhau;
+    
+    @Column(name = "TenDangNhap")
+    private String tendangnhap;
 
-    @Column(name = "DiaChi", nullable = false)
-    private String diaChi;
+	public NhanVien() {
+		super();
+	}
 
-    @Column(name = "GioiTinh", nullable = false)
-    private boolean gioiTinh;
+	public NhanVien(int idmanv, String ten, int age, Date birthday, boolean vaitro, String diachi, boolean gioitinh,
+			boolean trangthai, String matkhau, String tendangnhap) {
+		super();
+		this.idmanv = idmanv;
+		this.ten = ten;
+		this.age = age;
+		this.birthday = birthday;
+		this.vaitro = vaitro;
+		this.diachi = diachi;
+		this.gioitinh = gioitinh;
+		this.trangthai = trangthai;
+		this.matkhau = matkhau;
+		this.tendangnhap = tendangnhap;
+	}
 
-    @Column(name = "TrangThai", nullable = false)
-    private boolean trangThai;
+	public int getIdmanv() {
+		return idmanv;
+	}
 
-    @Column(name = "MatKhau", nullable = false)
-    private String matKhau;
+	public void setIdmanv(int idmanv) {
+		this.idmanv = idmanv;
+	}
 
-    @Column(name = "TenDangNhap", nullable = false)
-    private String tenDangNhap;
+	public String getTen() {
+		return ten;
+	}
 
-    // Constructors, getters, and setters
-    public NhanVien() {
-    }
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
 
-    // Constructors, getters, and setters
-    public NhanVien(String ten, int age, Date birthday, boolean vaiTro, String diaChi, boolean gioiTinh, boolean trangThai, String matKhau, String tenDangNhap) {
-        this.ten = ten;
-        this.age = age;
-        this.birthday = birthday;
-        this.vaiTro = vaiTro;
-        this.diaChi = diaChi;
-        this.gioiTinh = gioiTinh;
-        this.trangThai = trangThai;
-        this.matKhau = matKhau;
-        this.tenDangNhap = tenDangNhap;
-    }
+	public int getAge() {
+		return age;
+	}
 
-    public int getIdMaNV() {
-        return idMaNV;
-    }
+	public void setAge(int age) {
+		this.age = age;
+	}
 
-    public void setIdMaNV(int idMaNV) {
-        this.idMaNV = idMaNV;
-    }
+	public Date getBirthday() {
+		return birthday;
+	}
 
-    public String getTen() {
-        return ten;
-    }
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
+	public boolean isVaitro() {
+		return vaitro;
+	}
 
-    public int getAge() {
-        return age;
-    }
+	public void setVaitro(boolean vaitro) {
+		this.vaitro = vaitro;
+	}
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+	public String getDiachi() {
+		return diachi;
+	}
 
-    public Date getBirthday() {
-        return birthday;
-    }
+	public void setDiachi(String diachi) {
+		this.diachi = diachi;
+	}
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
+	public boolean isGioitinh() {
+		return gioitinh;
+	}
 
-    public boolean isVaiTro() {
-        return vaiTro;
-    }
+	public void setGioitinh(boolean gioitinh) {
+		this.gioitinh = gioitinh;
+	}
 
-    public void setVaiTro(boolean vaiTro) {
-        this.vaiTro = vaiTro;
-    }
+	public boolean isTrangthai() {
+		return trangthai;
+	}
 
-    public String getDiaChi() {
-        return diaChi;
-    }
+	public void setTrangthai(boolean trangthai) {
+		this.trangthai = trangthai;
+	}
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
+	public String getMatkhau() {
+		return matkhau;
+	}
 
-    public boolean isGioiTinh() {
-        return gioiTinh;
-    }
+	public void setMatkhau(String matkhau) {
+		this.matkhau = matkhau;
+	}
 
-    public void setGioiTinh(boolean gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
+	public String getTendangnhap() {
+		return tendangnhap;
+	}
 
-    public boolean isTrangThai() {
-        return trangThai;
-    }
+	public void setTendangnhap(String tendangnhap) {
+		this.tendangnhap = tendangnhap;
+	}
 
-    public void setTrangThai(boolean trangThai) {
-        this.trangThai = trangThai;
-    }
-
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
-    public String getTenDangNhap() {
-        return tenDangNhap;
-    }
-
-    public void setTenDangNhap(String tenDangNhap) {
-        this.tenDangNhap = tenDangNhap;
-    }
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
+

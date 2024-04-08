@@ -9,7 +9,7 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:sqlserver://localhost:1433;database=DuAnJava4" />
+				value="jdbc:sqlserver://localhost;database=DuAnJava4" />
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="28012004"/>
 

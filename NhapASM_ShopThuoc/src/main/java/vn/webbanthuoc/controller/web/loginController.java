@@ -1,12 +1,11 @@
 package vn.webbanthuoc.controller.web;
 
+
+
+
 import java.io.IOException;
 
-
-
-
 import java.lang.reflect.InvocationTargetException;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 import vn.webbanthuoc.dao.KhachHangDao;
+import vn.webbanthuoc.dao.NhanVienDao;
 import vn.webbanthuoc.entity.KhachHang;
+import vn.webbanthuoc.entity.NhanVien;
 
 
 
-@WebServlet({"/Login", "/Home"})
+
+@WebServlet( { "/Login", "/Home"})
 public class loginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -59,14 +59,24 @@ public class loginController extends HttpServlet {
     private void Login(HttpServletRequest request, HttpServletResponse response)
             throws IllegalAccessException, InvocationTargetException, ServletException, IOException {
         KhachHangDao khDao = new KhachHangDao();
+        NhanVienDao nvDao = new NhanVienDao();
         if (request.getMethod().equalsIgnoreCase("POST")) {
             if (request.getParameter("buttonLogin") != null) {
                 String tenDN = request.getParameter("tendangnhap");
                 String pass = request.getParameter("matkhau");
+                
                 KhachHang kh = khDao.findById(tenDN);
+                NhanVien nv = nvDao.findById(tenDN);
+
                 if (kh != null && kh.getMatkhau().equals(pass)) {
-                    request.setAttribute("message", "Login succeed");
+                    request.setAttribute("message", "Login succeed as KhachHang");
                     request.getSession().setAttribute("KhachHang", kh);
+                    // Nếu đăng nhập thành công, chuyển hướng đến trang Home
+                    response.sendRedirect(request.getContextPath() + "/Home");
+                    return; // Chấm dứt xử lý ở đây để không chuyển hướng đến trang login nữa
+                } else if (nv != null && nv.getMatkhau().equals(pass)) {
+                    request.setAttribute("message", "Login succeed as NhanVien");
+                    request.getSession().setAttribute("NhanVien", nv);
                     // Nếu đăng nhập thành công, chuyển hướng đến trang Home
                     response.sendRedirect(request.getContextPath() + "/Home");
                     return; // Chấm dứt xử lý ở đây để không chuyển hướng đến trang login nữa
