@@ -72,8 +72,8 @@
                             <tr> 
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-<%--                                         <img src="img/${entry.hinh}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
- --%>                                    </div>
+                                        <img src="${entry.value.hinh}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                 </div>
                                 </th>
                                 <td>
                                     <p class="mb-0 mt-4">${entry.value.ten}</p>
@@ -209,6 +209,26 @@
         <!-- Cart Page End -->
         <%@ include file="/common/web/footer.jsp"%>
 </body>
+<script>
+  // Function to update total price when quantity changes
+  function updateTotalPrice(entryId) {
+    var quantityInput = document.getElementById('quantity_' + entryId);
+    var totalPriceElement = document.getElementById('totalPrice_' + entryId);
+    var price = parseFloat('${entry.value.gia}');
+    var quantity = parseInt(quantityInput.value);
+    var totalPrice = price * quantity;
+    totalPriceElement.innerHTML = totalPrice;
+  }
+
+  // Attach event listeners to quantity input fields
+  var quantityInputs = document.querySelectorAll('.quantity-input');
+  quantityInputs.forEach(function(input) {
+    input.addEventListener('input', function() {
+      var entryId = this.getAttribute('data-entry-id');
+      updateTotalPrice(entryId);
+    });
+  });
+</script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script
