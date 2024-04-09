@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/common/taglib.jsp"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+    <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +99,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                <h2>${entry.value.gia * entry.value.quantity}</h2>
+                               
+					<%-- 	<fmt:formatNumber type = "number" 
+         maxFractionDigits = "3" value = "${entry.value.gia * entry.value.quantity}" /> --%>
+				
+                          <%--       <h2>${entry.value.gia * entry.value.quantity}</h2> --%>
                                    <fmt:formatNumber type = "number"  maxFractionDigits = "3" value ="${entry.value.gia * entry.value.quantity}" />
          <c:set var="sum" value="${sum+(entry.value.gia * entry.value.quantity)}"/>
                                 </td>
@@ -210,24 +216,7 @@
         <%@ include file="/common/web/footer.jsp"%>
 </body>
 <script>
-  // Function to update total price when quantity changes
-  function updateTotalPrice(entryId) {
-    var quantityInput = document.getElementById('quantity_' + entryId);
-    var totalPriceElement = document.getElementById('totalPrice_' + entryId);
-    var price = parseFloat('${entry.value.gia}');
-    var quantity = parseInt(quantityInput.value);
-    var totalPrice = price * quantity;
-    totalPriceElement.innerHTML = totalPrice;
-  }
 
-  // Attach event listeners to quantity input fields
-  var quantityInputs = document.querySelectorAll('.quantity-input');
-  quantityInputs.forEach(function(input) {
-    input.addEventListener('input', function() {
-      var entryId = this.getAttribute('data-entry-id');
-      updateTotalPrice(entryId);
-    });
-  });
 </script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
