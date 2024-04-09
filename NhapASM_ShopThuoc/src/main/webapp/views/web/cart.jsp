@@ -36,8 +36,8 @@
 <!-- Template Stylesheet -->
 <link href="<c:url value='/template/web/css/style.css'/>"
 	rel="stylesheet">
-<link href="<c:url value='/template/web/css/style1.css'/>"
-	rel="stylesheet">
+<%-- <link href="<c:url value='/template/web/css/style1.css'/>"
+	rel="stylesheet"> --%>
 </head>
 <body>
 <%@ include file="/common/web/header.jsp"%>
@@ -85,12 +85,13 @@
                                 </td>
                                 <td>
                                     <div class="input-group quantity mt-4" style="width: 100px;">
+                                    
                                         <div class="input-group-btn">
                                             <button href="cartMinus?id=${entry.value.idThuoc}" class="btn btn-sm btn-minus rounded-circle bg-light border" >
                                             <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0 text-black"   value="${entry.value.quantity}">
+                                        <input type="text" class="form-control form-control-sm text-center border-0 "  value="${entry.value.quantity}">
                                         <div class="input-group-btn">
                                             <button href="cartPlus?id=${entry.value.idThuoc}" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
