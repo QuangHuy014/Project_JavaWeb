@@ -109,6 +109,7 @@ VALUES
 ('nt5', 'Loai thuoc 5');
 
 -- Thêm dữ liệu vào bảng Thuoc
+
 delete Thuoc
 INSERT INTO Thuoc (IDThuoc, Ten, IDNhomThuoc, SoLuong, Gia, IDKhachHang, IDMaNV, Hinh, NguonGoc, CongDung, NgaySanXuat, isActive, BaoQuan, DonVi)
 VALUES 
