@@ -23,11 +23,9 @@ public class SanPhamController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
-
 		switch (action) {
 		case "/sanPhamController":
 			SanPham(request, response);
