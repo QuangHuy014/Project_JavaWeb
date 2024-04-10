@@ -36,8 +36,8 @@ public class CheckoutSevlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("/views/web/order_confirm.jsp").forward(request, response);
+		
 	}
 
 	public class CheckoutServlet extends HttpServlet {
@@ -84,7 +84,9 @@ public class CheckoutSevlet extends HttpServlet {
 	        // Chuyển hướng đến trang thanh toán thành công hoặc trang khác
 	        response.sendRedirect("checkout-success.jsp");
 	    }
+	    
 	}
+	    
 
 
 }

@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<div class="wrapper">
-            <form action="checkout" method="post" id="wizard">
+            <form action="/checkout" method="POST" id="wizard">
         		<!-- SECTION 1 -->
                 <h2></h2>
                 <section>
@@ -36,15 +36,15 @@
 							<div class="form-row">
 							
 								<div class="form-holder">
-									<input type="text" placeholder="tenKhachHang" class="form-control">
+									<input type="text" placeholder="tenKhachHang" name="tenKhachHang" class="form-control">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-holder">
-									<input type="text" placeholder="email" class="form-control">
+									<input type="text" placeholder="email" name="email" class="form-control">
 								</div>
 								<div class="form-holder">
-									<input type="text" placeholder="soDienThoai" class="form-control">
+									<input type="text" placeholder="soDienThoai" name="soDienThoai" class="form-control">
 								</div>
 							</div>
 							<div class="form-row">
@@ -54,7 +54,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-holder w-100">
-									<button type=submit>Order</button>
+									<button type=submit >Order</button>
 								</div>
 							</div>
 						</div>
