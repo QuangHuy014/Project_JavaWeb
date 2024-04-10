@@ -5,7 +5,7 @@ public class hoaDonChiTiet {
     private int IDHoaDon;
     private String TenThuoc;
     private String IDThuoc;
-    private String SoLuong;
+    private int SoLuong;
     private float Gia;
     private String DonVi;
 
@@ -13,7 +13,7 @@ public class hoaDonChiTiet {
 		super();
 	}
 
-	public hoaDonChiTiet(int IDHoaDonChiTiet, int IDHoaDon, String TenThuoc, String IDThuoc, String SoLuong, float Gia, String DonVi) {
+	public hoaDonChiTiet(int IDHoaDonChiTiet, int IDHoaDon, String TenThuoc, String IDThuoc, int SoLuong, float Gia, String DonVi) {
         this.IDHoaDonChiTiet = IDHoaDonChiTiet;
         this.IDHoaDon = IDHoaDon;
         this.TenThuoc = TenThuoc;
@@ -55,7 +55,7 @@ public class hoaDonChiTiet {
 		IDThuoc = iDThuoc;
 	}
 
-	public String getSoLuong() {
+	public int getSoLuong() {
 		return SoLuong;
 	}
 

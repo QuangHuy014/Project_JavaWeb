@@ -36,12 +36,21 @@ public class KhachHang {
         super();
     }
 
-	public KhachHang(String tendangnhap, String matkhau, String ten, boolean gioitinh) {
+	public KhachHang(int idkhachhang, String tendangnhap, String matkhau, String ten, boolean gioitinh) {
 		super();
+		this.idkhachhang = idkhachhang;
 		this.tendangnhap = tendangnhap;
 		this.matkhau = matkhau;
 		this.ten = ten;
 		this.gioitinh = gioitinh;
+	}
+
+	public int getIdkhachhang() {
+		return idkhachhang;
+	}
+
+	public void setIdkhachhang(int idkhachhang) {
+		this.idkhachhang = idkhachhang;
 	}
 
 	public String getTendangnhap() {
