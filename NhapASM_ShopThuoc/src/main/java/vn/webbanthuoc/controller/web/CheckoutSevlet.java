@@ -51,40 +51,16 @@ public class CheckoutSevlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String soDienThoai = request.getParameter("soDienThoai");
 
-		// Tạo đối tượng hoaDon và lưu vào cơ sở dữ liệu
-		try {
-			hoaDon hoaDon = new hoaDon();
-			hoaDon.setIDMaNV(9);
-			hoaDon.setIDKhachHang(9);
-			hoaDon.setIDHoaDon(1);
-			hoaDon.setTenKhachHang(tenKhachHang);
-			hoaDon.setDiaChiKhachHang(diaChi);
-			hoaDon.setEmail(email);
-			hoaDon.setSoDienThoaiKhachHang(soDienThoai);
-			hoaDon.setNgayDH(new Date());
-			hoaDonDao.create(hoaDon);
-		} catch (Exception e) {
-			System.out.println("loi insert hoa don ");
-			e.printStackTrace();
-		}
-
-	        // Tạo đối tượng hoaDon và lưu vào cơ sở dữ liệu
-//	        try {
-//				
-//			
-//	       
-//	        } catch (Exception e) {
-//				System.out.println("loi them hoa don ");
-//				e.printStackTrace();
-//			}
 
 	        // Lấy giỏ hàng từ session
 	        Map<String, Thuoc> cartThuoc = (Map<String, Thuoc>) request.getSession().getAttribute("cartThuocss");
 try {
 	 hoaDon hoaDon = new hoaDon();
-      hoaDon.setIDMaNV(5);
+		int idnv= (int) request.getSession().getAttribute("NhanVienID");
+
+      hoaDon.setIDMaNV(idnv);
       hoaDon.setIDKhachHang(5);
-      hoaDon.setIDHoaDon(13);
+      hoaDon.setIDHoaDon(14);
       hoaDon.setTenKhachHang(tenKhachHang);
       hoaDon.setDiaChiKhachHang(diaChi);
       hoaDon.setEmail(email);

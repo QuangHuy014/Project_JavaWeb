@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import vn.webbanthuoc.dao.HoaDonDao;
 import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
 import vn.webbanthuoc.util.JpaUtil;
@@ -20,8 +21,9 @@ import vn.webbanthuoc.util.JpaUtil;
 /**
  * Servlet implementation class CartCellPhoneServletSolution1
  */
-@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus"})
+@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus","/removeFromCart"})
 public class CartProduct extends HttpServlet {
+	HoaDonDao daohd=new HoaDonDao();
 	Map<String, Thuoc> cartThuoc = new HashMap<String, Thuoc>();
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,17 +61,19 @@ public class CartProduct extends HttpServlet {
 		req.getSession().setAttribute("cartThuocss", cartThuoc);
 		req.setAttribute("countCellPhones", cartThuoc.size());
 		req.setAttribute("cartProductsList", thuocDao.findAll());
-		if(req.getRequestURI().contains("PhoneList1") || req.getRequestURI().contains("addToCart1"))
+//		req.setAttribute("hoaDonList", daohd.findAll());
+		if(req.getRequestURI().contains("PhoneList1") || req.getRequestURI().contains("addToCart1")) {
 			req.getRequestDispatcher("/client/addToCart").forward(req, resp);
-		else
-			req.getRequestDispatcher("/client/addToCart").forward(req, resp);
-		   String uric=req.getRequestURI();
-		if(uric.equals("removeFromCart")) {
+		}
+		//else {
+//			req.getRequestDispatcher("/client/addToCart").forward(req, resp);}
+		   String actionremove=req.getParameter("remove");
+		if(action != null &&action.equals("remove")) {
 			removeProductFromCart(idThuoc);
 		}
 	}
 	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        String productId = request.getParameter("id");
+//	        String productId = request.getParameter("id");
 	        // Xử lý logic xóa sản phẩm ở đây, sau đó cập nhật giỏ hàng
 	        // Ví dụ: cartThuocss.remove(productId);
 	        // Sau đó, chuyển hướng hoặc trả về phản hồi xác nhận thành công

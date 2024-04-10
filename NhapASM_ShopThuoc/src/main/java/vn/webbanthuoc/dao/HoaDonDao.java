@@ -21,7 +21,7 @@ public class HoaDonDao {
     }
     public List<hoaDon> findAllHoaDon() {
 		EntityManager em = JpaUtil.getEntityManager();
-		String jpql = "SELECT s FROM hoaDon s order by s.idThuoc";
+		String jpql = "SELECT s FROM hoaDon s order by s.IDHoaDon";
 		TypedQuery<hoaDon> query = em.createQuery(jpql, hoaDon.class);
 		return query.getResultList();
 	}
@@ -85,7 +85,7 @@ public class HoaDonDao {
 
     public List<hoaDon> findAll() {
         EntityManager em = JpaUtil.getEntityManager();
-        TypedQuery<hoaDon> query = em.createNamedQuery("hoaDon.findAll", hoaDon.class);
+        TypedQuery<hoaDon> query = em.createNamedQuery("SELECT hd FROM hoaDon hd", hoaDon.class);
         return query.getResultList();
     }
 
