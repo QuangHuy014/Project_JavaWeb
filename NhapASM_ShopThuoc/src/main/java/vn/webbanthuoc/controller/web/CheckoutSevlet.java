@@ -40,8 +40,6 @@ public class CheckoutSevlet extends HttpServlet {
 		
 	}
 
-	public class CheckoutServlet extends HttpServlet {
-	    private static final long serialVersionUID = 1L;
 
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
@@ -52,40 +50,58 @@ public class CheckoutSevlet extends HttpServlet {
 	        String soDienThoai = request.getParameter("soDienThoai");
 
 	        // Tạo đối tượng hoaDon và lưu vào cơ sở dữ liệu
-	        hoaDon hoaDon = new hoaDon();
-	        hoaDon.setIDMaNV(9);
-	        hoaDon.setIDKhachHang(9);
-	        hoaDon.setIDHoaDon(1);
-	        hoaDon.setTenKhachHang(tenKhachHang);
-	        hoaDon.setDiaChiKhachHang(diaChi);
-	        hoaDon.setEmail(email);
-	        hoaDon.setSoDienThoaiKhachHang(soDienThoai);
-	        hoaDon.setNgayDH(new Date());
-	        hoaDonDao.create(hoaDon);
-	        
+//	        try {
+//				
+//			
+//	       
+//	        } catch (Exception e) {
+//				System.out.println("loi them hoa don ");
+//				e.printStackTrace();
+//			}
 
 	        // Lấy giỏ hàng từ session
 	        Map<String, Thuoc> cartThuoc = (Map<String, Thuoc>) request.getSession().getAttribute("cartThuocss");
+try {
+	 hoaDon hoaDon = new hoaDon();
+      hoaDon.setIDMaNV(5);
+      hoaDon.setIDKhachHang(5);
+      hoaDon.setIDHoaDon(13);
+      hoaDon.setTenKhachHang(tenKhachHang);
+      hoaDon.setDiaChiKhachHang(diaChi);
+      hoaDon.setEmail(email);
+      hoaDon.setSoDienThoaiKhachHang(soDienThoai);
+      hoaDon.setNgayDH(new Date());
+      hoaDonDao.create(hoaDon);
+      //
 
 	        // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
 	        for (Thuoc thuoc : cartThuoc.values()) {
+	        	Thuoc thuocc=new Thuoc();
+	        	
 	            hoaDonChiTiet hoaDonChiTiet = new hoaDonChiTiet();
+	            hoaDonChiTiet.setHoaDon(hoaDon);
+	            
 	            hoaDonChiTiet.setTenThuoc(thuoc.getTen());
 	            hoaDonChiTiet.setIDThuoc(thuoc.getIdThuoc());
 	            hoaDonChiTiet.setSoLuong(thuoc.getQuantity());
+	           
 	            hoaDonChiTiet.setGia(thuoc.getGia());
 	            hoaDonChiTiet.setDonVi(thuoc.getDonVi());
 	            HoaDonChiTietDao.save(hoaDonChiTiet);
 	        }
+} catch (Exception e) {
+	System.out.println("loi khi them chi tiet hoa don");
+	e.printStackTrace();
+}
 
 	        // Sau khi lưu thành công, xóa giỏ hàng khỏi session
 	        request.getSession().removeAttribute("cartThuocss");
 
-	        // Chuyển hướng đến trang thanh toán thành công hoặc trang khác
-	        response.sendRedirect("checkout-success.jsp");
+//	        // Chuyển hướng đến trang thanh toán thành công hoặc trang khác
+//	        response.sendRedirect("checkout-success.jsp");
 	    }
 	    
-	}
+	
 	    
 
 

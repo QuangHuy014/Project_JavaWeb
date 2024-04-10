@@ -1,27 +1,50 @@
 package vn.webbanthuoc.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="HoaDonChiTiet")
 public class hoaDonChiTiet {
+	@Id
+	  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int IDHoaDonChiTiet;
-    private int IDHoaDon;
     private String TenThuoc;
-    private String IDThuoc;
     private int SoLuong;
     private float Gia;
     private String DonVi;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "IDThuoc", referencedColumnName = "IDThuoc")
+	@JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" }) // help history not error because map
+	private Thuoc thuoc;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "IDHoaDon", referencedColumnName = "IDHoaDon")
+    @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" }) // help history not error because map
+    private hoaDon hoaDon;
     public hoaDonChiTiet() {
 		super();
 	}
 
-	public hoaDonChiTiet(int IDHoaDonChiTiet, int IDHoaDon, String TenThuoc, String IDThuoc, int SoLuong, float Gia, String DonVi) {
-        this.IDHoaDonChiTiet = IDHoaDonChiTiet;
-        this.IDHoaDon = IDHoaDon;
-        this.TenThuoc = TenThuoc;
-        this.IDThuoc = IDThuoc;
-        this.SoLuong = SoLuong;
-        this.Gia = Gia;
-        this.DonVi = DonVi;
-    }
+	public hoaDonChiTiet(int iDHoaDonChiTiet, int iDHoaDon, String tenThuoc, int soLuong, float gia, String donVi,
+			Thuoc thuoc) {
+		super();
+		IDHoaDonChiTiet = iDHoaDonChiTiet;
+	
+		TenThuoc = tenThuoc;
+		SoLuong = soLuong;
+		Gia = gia;
+		DonVi = donVi;
+		this.thuoc = thuoc;
+	}
 
 	public int getIDHoaDonChiTiet() {
 		return IDHoaDonChiTiet;
@@ -31,12 +54,10 @@ public class hoaDonChiTiet {
 		IDHoaDonChiTiet = iDHoaDonChiTiet;
 	}
 
-	public int getIDHoaDon() {
-		return IDHoaDon;
-	}
 
-	public void setIDHoaDon(int iDHoaDon) {
-		IDHoaDon = iDHoaDon;
+
+	public void setDonVi(String donVi) {
+		DonVi = donVi;
 	}
 
 	public String getTenThuoc() {
@@ -47,20 +68,12 @@ public class hoaDonChiTiet {
 		TenThuoc = tenThuoc;
 	}
 
-	public String getIDThuoc() {
-		return IDThuoc;
-	}
-
-	public void setIDThuoc(String iDThuoc) {
-		IDThuoc = iDThuoc;
-	}
-
 	public int getSoLuong() {
 		return SoLuong;
 	}
 
-	public void setSoLuong(int i) {
-		SoLuong = i;
+	public void setSoLuong(int soLuong) {
+		SoLuong = soLuong;
 	}
 
 	public float getGia() {
@@ -71,13 +84,38 @@ public class hoaDonChiTiet {
 		Gia = gia;
 	}
 
+	public hoaDon getHoaDon() {
+		return hoaDon;
+	}
+
+	public void setHoaDon(hoaDon hoaDon) {
+		this.hoaDon = hoaDon;
+	}
+
 	public String getDonVi() {
 		return DonVi;
 	}
 
-	public void setDonVi(String donVi) {
-		DonVi = donVi;
+	public Thuoc getThuoc() {
+		return thuoc;
 	}
+
+	public void setThuoc(Thuoc thuoc) {
+		this.thuoc = thuoc;
+	}
+
+	
+
+	 public String getIDThuoc() {
+	        return this.thuoc != null ? this.thuoc.getIdThuoc() : (String) null;
+	    }
+
+	    public void setIDThuoc(String idThuoc) {
+	        if (this.thuoc == null) {
+	            this.thuoc = new Thuoc();
+	        }
+	        this.thuoc.setIdThuoc(idThuoc);
+	    }
 
 
  

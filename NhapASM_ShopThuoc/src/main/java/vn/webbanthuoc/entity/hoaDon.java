@@ -3,14 +3,19 @@ package vn.webbanthuoc.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+@Entity
+@Table(name="HoaDon")
 public class hoaDon {
+	@Id
     private int IDHoaDon;
-    private int iDKhachHang;
+    private int IDKhachHang;
     private int IDMaNV;
     private Date NgayDH;
     private String Email; // Thêm trường Email của khách hàng
@@ -18,15 +23,10 @@ public class hoaDon {
     private String DiaChiKhachHang; // Thêm trường Địa chỉ của khách hàng
     private String SoDienThoaiKhachHang; // Thêm trường Số điện thoại của khách hàng
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "IDHoaDonChiTiet", referencedColumnName = "IDHoaDonChiTiet")
-    @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" }) // help history not error because map
-    private hoaDonChiTiet hoaDonChiTiet;
-
 
 	public hoaDon(int IDHoaDon, int iDKhachHang, int IDMaNV, Date NgayDH) {
         this.IDHoaDon = IDHoaDon;
-        this.iDKhachHang = iDKhachHang;
+        this.IDKhachHang = iDKhachHang;
         this.IDMaNV = IDMaNV;
         this.NgayDH = NgayDH;
     }
@@ -45,11 +45,11 @@ public class hoaDon {
     }
 
     public int getIDKhachHang() {
-        return iDKhachHang;
+        return IDKhachHang;
     }
 
     public void setIDKhachHang(int iDKhachHang) {
-        this.iDKhachHang = iDKhachHang;
+        this.IDKhachHang = iDKhachHang;
     }
 
     public int getIDMaNV() {
