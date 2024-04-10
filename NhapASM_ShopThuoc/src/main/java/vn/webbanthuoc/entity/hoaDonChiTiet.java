@@ -59,8 +59,8 @@ public class hoaDonChiTiet {
 		return SoLuong;
 	}
 
-	public void setSoLuong(String soLuong) {
-		SoLuong = soLuong;
+	public void setSoLuong(int i) {
+		SoLuong = i;
 	}
 
 	public float getGia() {

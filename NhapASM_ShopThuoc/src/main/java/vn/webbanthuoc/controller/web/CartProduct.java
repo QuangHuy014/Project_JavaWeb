@@ -11,13 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import vn.webbanthuoc.dao.HoaDonDao;
 import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
+import vn.webbanthuoc.entity.hoaDon;
 import vn.webbanthuoc.util.JpaUtil;
 
 @WebServlet({"/PhoneList1", "/addToCart1", "/cartPlus", "/cartMinus", "/removeFromCart"})
 public class CartProduct extends HttpServlet {
     Map<String, Thuoc> cartThuoc = new HashMap<String, Thuoc>();
+    HoaDonDao hoaDonDao=new HoaDonDao();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -58,4 +61,5 @@ public class CartProduct extends HttpServlet {
         req.setAttribute("cartProductsList", thuocDao.findAll());
         req.getRequestDispatcher("/client/addToCart").forward(req, resp);
     }
+  
 }
