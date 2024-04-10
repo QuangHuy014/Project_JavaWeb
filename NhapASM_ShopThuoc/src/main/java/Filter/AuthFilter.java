@@ -25,7 +25,7 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Khởi tạo - không cần làm gì trong ví dụ này
+
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
