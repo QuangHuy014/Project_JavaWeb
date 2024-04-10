@@ -1,6 +1,7 @@
-package vn.webbanthuoc.controller.web;
+	package vn.webbanthuoc.controller.web;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -23,11 +24,9 @@ public class SanPhamController extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
-
 		switch (action) {
 		case "/sanPhamController":
 			SanPham(request, response);

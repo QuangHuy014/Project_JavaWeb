@@ -350,7 +350,7 @@
 														<a href="#" class="btn border rounded-pill px-3 me-3"
 															style="font-size: 13px"> ${user.donVi}</a> 
 															<a
-															href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}"
+															href="addToCart1?id=${user.idThuoc}"
 															class="btn border border-info rounded-pill px-1 text-info me-3"
 															style="font-size: 15px"><i
 															class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
