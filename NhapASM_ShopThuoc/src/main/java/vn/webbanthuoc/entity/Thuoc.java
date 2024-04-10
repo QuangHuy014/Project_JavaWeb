@@ -74,7 +74,7 @@ public class Thuoc {
 	@Column(name = "DonVi", nullable = false)
 	private String donVi;
 
-	// Constructors, getters, and setters
+
 	public Thuoc() {
 	}
 

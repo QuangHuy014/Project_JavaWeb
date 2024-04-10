@@ -109,7 +109,9 @@ VALUES
 ('nt5', 'Loai thuoc 5');
 
 -- Thêm dữ liệu vào bảng Thuoc
-delete Thuoc
+select * from Thuoc
+select * from NhanVien
+delete  from Thuoc where IDThuoc='t10';
 INSERT INTO Thuoc (IDThuoc, Ten, IDNhomThuoc, SoLuong, Gia, IDKhachHang, IDMaNV, Hinh, NguonGoc, CongDung, NgaySanXuat, isActive, BaoQuan, DonVi)
 VALUES 
 ('t1', N'Viên uống Perfect White Jpanwell giảm triệu chứng rối loạn', 'nt1', 1, 2235000, NULL, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/300x300/https://cms-prod.s3-sgn09.fptcloud.com/00021929_perfect_white_60v_3739_600f_large_6794b33ce3.JPG', N'Nguồn gốc 1', N' tiêu hóa (2 vỉ x 10 viên)', '2024-04-03', 1, N'Bảo quản 1', N'Hộp lớn'),
