@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>NhapASM_ShopThuoc</display-name>
 
+	Cấu hình session timeout và cookie
 	<session-config>
+		<session-timeout>1</session-timeout> Thời gian session timeout, ở đây là 1 phút
+		<cookie-config>
+			<max-age>-1</max-age> Cookie sẽ hết hiệu lực khi đóng trình duyệt
+		</cookie-config>
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
 	
-	 
 	<welcome-file-list>
 		<welcome-file>redirect.jsp</welcome-file>
 	</welcome-file-list>
+</web-app> -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+
+    <display-name>NhapASM_ShopThuoc</display-name>
+
+    <session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+    
+    <welcome-file-list>
+        <welcome-file>redirect.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

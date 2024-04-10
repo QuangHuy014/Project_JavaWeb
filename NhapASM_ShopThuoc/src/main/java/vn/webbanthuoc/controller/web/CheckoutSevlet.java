@@ -19,7 +19,7 @@ import vn.webbanthuoc.entity.hoaDonChiTiet;
 /**
  * Servlet implementation class CheckoutSevlet
  */
-@WebServlet("/CheckoutSevlet")
+@WebServlet({"","/checkout"})
 public class CheckoutSevlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     HoaDonDao hoaDonDao=new HoaDonDao();
@@ -40,7 +40,6 @@ public class CheckoutSevlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	@WebServlet("/checkout")
 	public class CheckoutServlet extends HttpServlet {
 	    private static final long serialVersionUID = 1L;
 
@@ -54,11 +53,16 @@ public class CheckoutSevlet extends HttpServlet {
 
 	        // Tạo đối tượng hoaDon và lưu vào cơ sở dữ liệu
 	        hoaDon hoaDon = new hoaDon();
-	        hoaDon.setIDMaNV(1);
-	        hoaDon.setIDKhachHang(1);
+	        hoaDon.setIDMaNV(9);
+	        hoaDon.setIDKhachHang(9);
 	        hoaDon.setIDHoaDon(1);
+	        hoaDon.setTenKhachHang(tenKhachHang);
+	        hoaDon.setDiaChiKhachHang(diaChi);
+	        hoaDon.setEmail(email);
+	        hoaDon.setSoDienThoaiKhachHang(soDienThoai);
 	        hoaDon.setNgayDH(new Date());
 	        hoaDonDao.create(hoaDon);
+	        
 
 	        // Lấy giỏ hàng từ session
 	        Map<String, Thuoc> cartThuoc = (Map<String, Thuoc>) request.getSession().getAttribute("cartThuocss");
@@ -66,7 +70,6 @@ public class CheckoutSevlet extends HttpServlet {
 	        // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
 	        for (Thuoc thuoc : cartThuoc.values()) {
 	            hoaDonChiTiet hoaDonChiTiet = new hoaDonChiTiet();
-	            hoaDonChiTiet.setIDHoaDon(1);
 	            hoaDonChiTiet.setTenThuoc(thuoc.getTen());
 	            hoaDonChiTiet.setIDThuoc(thuoc.getIdThuoc());
 	            hoaDonChiTiet.setSoLuong(thuoc.getQuantity());
