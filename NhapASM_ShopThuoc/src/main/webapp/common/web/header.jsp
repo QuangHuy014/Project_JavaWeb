@@ -56,6 +56,12 @@
 						href="../fruitables-1.0.0/login-form-20/login-form-20/index.html"
 						class="my-auto"> <i class="fas fa-user fa-2x"></i>
 					</a>
+					<c:if test="${not empty sessionScope.user}">
+						<a class="nav-link nav-link-1 " data-toggle="modal"
+							data-target="#changePassModel">Welcome,
+							${sessionScope.user.id }</a>
+
+					</c:if>
 				</div>
 			</div>
 		</nav>

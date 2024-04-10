@@ -81,6 +81,7 @@ public class HoaDonDao {
             em.close();
         }
     }
+    
 
     public List<hoaDon> findAll() {
         EntityManager em = JpaUtil.getEntityManager();
