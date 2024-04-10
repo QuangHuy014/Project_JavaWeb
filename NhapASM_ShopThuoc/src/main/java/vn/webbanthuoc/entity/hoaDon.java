@@ -19,6 +19,7 @@ public class hoaDon {
 	private hoaDonChiTiet hoaDonChiTiet;
     // Constructors, getters, and setters
     // Constructor
+    
     public hoaDon(int IDHoaDon, int iDKhachHang, int IDMaNV, Date NgayDH) {
         this.IDHoaDon = IDHoaDon;
         this.iDKhachHang = iDKhachHang;
@@ -26,7 +27,11 @@ public class hoaDon {
         this.NgayDH = NgayDH;
     }
 
-    // Getters and setters
+    public hoaDon() {
+		super();
+	}
+
+	// Getters and setters
     public int getIDHoaDon() {
         return IDHoaDon;
     }
