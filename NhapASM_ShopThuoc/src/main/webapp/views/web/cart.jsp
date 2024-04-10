@@ -152,9 +152,9 @@
 									đ
 								</p>
 							</div>
-							<button
+							<a
 								class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-								type="button">Proceed Checkout</button>
+							  href="checkout">Proceed Checkout</a>
 						</div>
 					</div>
 				</div>
