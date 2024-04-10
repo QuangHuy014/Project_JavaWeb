@@ -51,7 +51,7 @@
 					<a href="#" class="position-relative me-4 my-auto"> <i
 						class="fa fa-shopping-bag fa-2x" style=""></i> <span
 						class="position-absolute bg-primary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-						style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						style="top: -5px; left: 15px; height: 20px; min-width: 20px;" >${countCellPhones}</span>
 					</a> <a
 						href="../fruitables-1.0.0/login-form-20/login-form-20/index.html"
 						class="my-auto"> <i class="fas fa-user fa-2x"></i>
