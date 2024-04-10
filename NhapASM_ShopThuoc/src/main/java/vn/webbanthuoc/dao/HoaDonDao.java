@@ -7,18 +7,26 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import vn.webbanthuoc.entity.Thuoc;
 import vn.webbanthuoc.entity.hoaDon;
 import vn.webbanthuoc.util.JpaUtil;
 
 public class HoaDonDao {
-    
+	
     @Override
     protected void finalize() throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         em.close();
         super.finalize();
     }
-
+    public List<hoaDon> findAllHoaDon() {
+		EntityManager em = JpaUtil.getEntityManager();
+		String jpql = "SELECT s FROM hoaDon s order by s.idThuoc";
+		TypedQuery<hoaDon> query = em.createQuery(jpql, hoaDon.class);
+		return query.getResultList();
+	}
+    
+    
     public void create(hoaDon hoaDon) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
