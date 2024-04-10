@@ -1,6 +1,7 @@
 package vn.webbanthuoc.controller.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,7 +27,7 @@ public class CartProduct extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ThuocDao thuocDao = new ThuocDao();
 
-		if (req.getMethod().equals("GET")) {
+		
 			String idThuoc = req.getParameter("id");
 			System.out.println("thuocId: " + idThuoc);
 			if (cartThuoc.containsKey(idThuoc) && cartThuoc.get(idThuoc) != null) {
@@ -44,8 +45,6 @@ public class CartProduct extends HttpServlet {
             }
 			
 			
-		}else
-		{
 			String uri = req.getRequestURI();
 			String thuocId = req.getParameter("id");
 			if(uri.contains("cartPlus")) {
@@ -57,7 +56,7 @@ public class CartProduct extends HttpServlet {
 					cartThuoc.get(thuocId).setQuantity( cartThuoc.get(thuocId).getQuantity() - 1);
 			}
 				
-		}
+		
 		req.getSession().setAttribute("cartThuocss", cartThuoc);
 		req.setAttribute("countCellPhones", cartThuoc.size());
 		req.setAttribute("cartProductsList", thuocDao.findAll());
