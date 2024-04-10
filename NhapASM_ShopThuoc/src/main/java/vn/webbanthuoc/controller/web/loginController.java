@@ -72,13 +72,13 @@ public class loginController extends HttpServlet {
                     request.setAttribute("message", "Login succeed as KhachHang");
                     request.getSession().setAttribute("KhachHang", kh);
                     // Nếu đăng nhập thành công, chuyển hướng đến trang Home
-                    response.sendRedirect(request.getContextPath() + "/Home");
+                    response.sendRedirect(request.getContextPath() + "/homeController");
                     return; // Chấm dứt xử lý ở đây để không chuyển hướng đến trang login nữa
                 } else if (nv != null && nv.getMatkhau().equals(pass)) {
                     request.setAttribute("message", "Login succeed as NhanVien");
                     request.getSession().setAttribute("NhanVien", nv);
                     // Nếu đăng nhập thành công, chuyển hướng đến trang Home
-                    response.sendRedirect(request.getContextPath() + "/Home");
+                    response.sendRedirect(request.getContextPath() + "/homeController");
                     return; // Chấm dứt xử lý ở đây để không chuyển hướng đến trang login nữa
                 } else {
                     request.setAttribute("message", "Invalid username or password");

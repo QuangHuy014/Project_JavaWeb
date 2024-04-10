@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="/common/taglib.jsp"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
+    <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,8 +36,8 @@
 <!-- Template Stylesheet -->
 <link href="<c:url value='/template/web/css/style.css'/>"
 	rel="stylesheet">
-<link href="<c:url value='/template/web/css/style1.css'/>"
-	rel="stylesheet">
+<%-- <link href="<c:url value='/template/web/css/style1.css'/>"
+	rel="stylesheet"> --%>
 </head>
 <body>
 <%@ include file="/common/web/header.jsp"%>
@@ -72,8 +74,8 @@
                             <tr> 
                                 <th scope="row">
                                     <div class="d-flex align-items-center">
-<%--                                         <img src="img/${entry.hinh}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
- --%>                                    </div>
+                                        <img src="${entry.value.hinh}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                 </div>
                                 </th>
                                 <td>
                                     <p class="mb-0 mt-4">${entry.value.ten}</p>
@@ -83,21 +85,26 @@
                                 </td>
                                 <td>
                                     <div class="input-group quantity mt-4" style="width: 100px;">
+                                    
                                         <div class="input-group-btn">
-                                            <button href="cartMinus?id=${entry.value.idThuoc}" class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                            <a  href="cartMinus?id=${entry.value.idThuoc}" class="btn btn-sm btn-minus rounded-circle bg-light border" >
                                             <i class="fa fa-minus"></i>
-                                            </button>
+                                            </a>
                                         </div>
-                                        <input type="text" class="form-control form-control-sm text-center border-0 text-black"   value="${entry.value.quantity}">
+                                        <input type="text" class="form-control form-control-sm text-center border-0 "  value="${entry.value.quantity}">
                                         <div class="input-group-btn">
-                                            <button href="cartPlus?id=${entry.value.idThuoc}" class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <a href="cartPlus?id=${entry.value.idThuoc}" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                <h2>${entry.value.gia * entry.value.quantity}</h2>
+                               
+					<%-- 	<fmt:formatNumber type = "number" 
+         maxFractionDigits = "3" value = "${entry.value.gia * entry.value.quantity}" /> --%>
+				
+                          <%--       <h2>${entry.value.gia * entry.value.quantity}</h2> --%>
                                    <fmt:formatNumber type = "number"  maxFractionDigits = "3" value ="${entry.value.gia * entry.value.quantity}" />
          <c:set var="sum" value="${sum+(entry.value.gia * entry.value.quantity)}"/>
                                 </td>
@@ -209,6 +216,9 @@
         <!-- Cart Page End -->
         <%@ include file="/common/web/footer.jsp"%>
 </body>
+<script>
+
+</script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script
