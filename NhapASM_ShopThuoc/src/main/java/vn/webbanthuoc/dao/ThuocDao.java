@@ -5,14 +5,52 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import vn.webbanthuoc.entity.KhachHang;
 import vn.webbanthuoc.entity.Thuoc;
 import vn.webbanthuoc.util.JpaUtil;
 
 public class ThuocDao {
-
+	
+	public void delete(String id) throws Exception {
+		EntityManager em = JpaUtil.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			Thuoc user = em.find(Thuoc.class, id);
+			em.remove(user);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
+	
+	public void createProduct(Thuoc thuoc) {
+		EntityManager em = JpaUtil.getEntityManager();
+		try {
+			em.getTransaction().begin();
+			em.persist(thuoc);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw e;
+		} finally {
+			em.close();
+		}
+	}
+	public List<KhachHang>FindAllCustomer(){
+		EntityManager em=JpaUtil.getEntityManager();
+		String jpql="SELECT t from KhachHang t ";
+		TypedQuery<KhachHang> query=em.createQuery(jpql, KhachHang.class);
+		return query.getResultList();
+	}
+	
 	public List<Thuoc> findAll() {
 		EntityManager em = JpaUtil.getEntityManager();
 		String jpql = "SELECT s FROM Thuoc s order by s.idThuoc";
@@ -97,6 +135,12 @@ public class ThuocDao {
 	    return entity;
 	}
 	
+	
+
+
+
+
+	
 	public List<Thuoc> Filter3Product() {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    String jpql = "SELECT t FROM Thuoc t ORDER BY t.gia DESC";
@@ -117,6 +161,14 @@ public class ThuocDao {
 		TypedQuery<Thuoc> query=em.createQuery(jpql,Thuoc.class);
 		query.setMaxResults(6);
 		return query.getResultList();
+	}
+	public List<Thuoc>Fillter4Productlike1(){
+		EntityManager em=JpaUtil.getEntityManager();
+		String jpql="Select t from Thuoc t ORDER BY t.gia ASC";
+		TypedQuery<Thuoc> query=em.createQuery(jpql,Thuoc.class);
+		query.setMaxResults(4);
+		return query.getResultList();
+		
 	}
 
 

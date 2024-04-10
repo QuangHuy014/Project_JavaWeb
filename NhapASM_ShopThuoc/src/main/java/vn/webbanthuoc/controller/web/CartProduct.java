@@ -1,6 +1,7 @@
 package vn.webbanthuoc.controller.web;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,47 +26,63 @@ public class CartProduct extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ThuocDao thuocDao = new ThuocDao();
-
-		if (req.getMethod().equals("GET")) {
 			String idThuoc = req.getParameter("id");
 			System.out.println("thuocId: " + idThuoc);
-			if (cartThuoc.containsKey(idThuoc) && cartThuoc.get(idThuoc) != null) {
-                // Nếu đã tồn tại, tăng số lần xuất hiện lên 1
-				System.out.println(cartThuoc.get(idThuoc));
-				
-				cartThuoc.get(idThuoc).setQuantity( cartThuoc.get(idThuoc).getQuantity() + 1);
-				
-            } else {
-                EntityManager em = JpaUtil.getEntityManager();
-                Thuoc thuoc=em.find(Thuoc.class, idThuoc);
-                // Nếu chưa tồn tại, thêm từ vào Map với số lần xuất hiện là 1
-            	cartThuoc.put(idThuoc, thuoc);
-            	
-            }
 			
+			String action=req.getParameter("action");
+			if (action != null && action.equals("minus")) {
+			    // Xử lý giảm số lượng sản phẩm
+			    if (cartThuoc.containsKey(idThuoc) && cartThuoc.get(idThuoc) != null) {
+			        // Kiểm tra nếu sản phẩm tồn tại trong giỏ hàng và số lượng > 1, thì giảm số lượng đi 1
+			        if (cartThuoc.get(idThuoc).getQuantity() > 1) {
+			            cartThuoc.get(idThuoc).setQuantity(cartThuoc.get(idThuoc).getQuantity() - 1);
+			        } else {
+			            // Nếu số lượng sản phẩm là 1, thì loại bỏ sản phẩm khỏi giỏ hàng
+			            cartThuoc.remove(idThuoc);
+			        }
+			    }
+			}else {
+				if (cartThuoc.containsKey(idThuoc) && cartThuoc.get(idThuoc) != null) {
+				    cartThuoc.get(idThuoc).setQuantity(cartThuoc.get(idThuoc).getQuantity() + 1);
 			
-		}else
-		{
-			String uri = req.getRequestURI();
-			String thuocId = req.getParameter("id");
-			if(uri.contains("cartPlus")) {
-				cartThuoc.get(thuocId).setQuantity( cartThuoc.get(thuocId).getQuantity() + 1);
-			}else if(uri.contains("cartMinus")) {
-				if(cartThuoc.get(thuocId).getQuantity() == 1) {
-					cartThuoc.remove(thuocId);
-				}else
-					cartThuoc.get(thuocId).setQuantity( cartThuoc.get(thuocId).getQuantity() - 1);
-
+				} else {
+				    // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm sản phẩm vào giỏ hàng với số lượng là 1
+				    EntityManager em = JpaUtil.getEntityManager();
+				    Thuoc thuoc = em.find(Thuoc.class, idThuoc);
+				    if (thuoc != null) {
+				        cartThuoc.put(idThuoc, thuoc);
+				    }
+				}
 			}
-			
-			
-		}
+				
+		
 		req.getSession().setAttribute("cartThuocss", cartThuoc);
 		req.setAttribute("countCellPhones", cartThuoc.size());
 		req.setAttribute("cartProductsList", thuocDao.findAll());
 		if(req.getRequestURI().contains("PhoneList1") || req.getRequestURI().contains("addToCart1"))
 			req.getRequestDispatcher("/client/addToCart").forward(req, resp);
 		else
-			req.getRequestDispatcher("/cartPhoneView1").forward(req, resp);
+			req.getRequestDispatcher("/client/addToCart").forward(req, resp);
+		   String uric=req.getRequestURI();
+		if(uric.equals("removeFromCart")) {
+			removeProductFromCart(idThuoc);
+		}
 	}
+	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	        String productId = request.getParameter("id");
+	        // Xử lý logic xóa sản phẩm ở đây, sau đó cập nhật giỏ hàng
+	        // Ví dụ: cartThuocss.remove(productId);
+	        // Sau đó, chuyển hướng hoặc trả về phản hồi xác nhận thành công
+	    }
+
+	   private void removeProductFromCart(String idThuoc) {
+	        Thuoc thuoc = cartThuoc.get(idThuoc);
+	        if (thuoc != null) {
+	            if (thuoc.getQuantity() > 1) {
+	                thuoc.setQuantity(thuoc.getQuantity() - 1);
+	            } else {
+	                cartThuoc.remove(idThuoc);
+	            }
+	        }
+	   }
 }

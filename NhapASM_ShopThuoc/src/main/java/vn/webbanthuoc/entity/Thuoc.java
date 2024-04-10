@@ -74,7 +74,7 @@ public class Thuoc {
 	@Column(name = "DonVi", nullable = false)
 	private String donVi;
 
-	// Constructors, getters, and setters
+
 	public Thuoc() {
 	}
 
@@ -219,5 +219,8 @@ public class Thuoc {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	// Định nghĩa phương thức getTenThuoc
+    
 	
 }

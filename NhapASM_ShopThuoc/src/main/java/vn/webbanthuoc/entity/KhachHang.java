@@ -14,8 +14,6 @@ import javax.persistence.Table;
 //@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u order by u.TenDangNhap")
 public class KhachHang {
     private static final long serialVersionUID = 1L;
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IDKhachHang")
@@ -38,12 +36,21 @@ public class KhachHang {
         super();
     }
 
-	public KhachHang(String tendangnhap, String matkhau, String ten, boolean gioitinh) {
+	public KhachHang(int idkhachhang, String tendangnhap, String matkhau, String ten, boolean gioitinh) {
 		super();
+		this.idkhachhang = idkhachhang;
 		this.tendangnhap = tendangnhap;
 		this.matkhau = matkhau;
 		this.ten = ten;
 		this.gioitinh = gioitinh;
+	}
+
+	public int getIdkhachhang() {
+		return idkhachhang;
+	}
+
+	public void setIdkhachhang(int idkhachhang) {
+		this.idkhachhang = idkhachhang;
 	}
 
 	public String getTendangnhap() {
@@ -81,11 +88,5 @@ public class KhachHang {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-    
 
-	
-
-	
-
-   
 }

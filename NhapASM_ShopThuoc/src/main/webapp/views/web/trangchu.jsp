@@ -239,8 +239,10 @@
 
 								<a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}"
 									class="btn border border-info rounded-pill px-1 text-info me-3"
-									style="font-size: 15px"><i
+									style="font-size: 15px; display: block; margin: 0 auto;"><i
 									class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
+									
+									
 
 							</div>
 						</div>
@@ -310,118 +312,34 @@
 					</div>
 				</div>
 				<div class="row" style="margin-top: 20px;">
-					<div class="col-md-3 py-3 py-md-0">
-						<div class="product-card-wrapper">
-							<div class="card">
-								<div
-									class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
-									style="top: 0px; left: 0px;">-20%</div>
-								<img src="<c:url value='/template/web/img/anhthuoc5.webp' />"
-									alt="">
-								<div class="card-body">
-									<div class="slider-product-one-content-item-text">
-										<li><img
-											src="<c:url value='/template/web/img/icon1.webp' />" alt="">
-											<p>Giảm sốc</p></li>
-										<li>Nước súc miệng Listerine Cool Mint giúp hơi thở thơm
-											mát</li>
-										<li><span style="color: blue;">56.400<sup>đ</sup>/Hộp
-										</span> <del>
-												99.000<sup>đ</sup>
-											</del></li>
-
-										<button type="submit" class="btn btn-primary btn-dark"
-											style="display: block; margin: 0 auto; background-color: #3153DC;">Thêm
-											vào giỏ thuốc</button>
+					<c:forEach var="user" items="${ListSP2}">
+						<div class="col-md-3 py-3 py-md-0">
+							<div class="product-card-wrapper">
+								<div class="card">
+									<div
+										class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
+										style="top: 0px; left: 0px;">-20%</div>
+									<img src="${user.hinh}" alt="">
+									<div class="card-body">
+										<div class="slider-product-one-content-item-text">
+											<li><img
+												src="<c:url value='/template/web/img/icon1.webp' />" alt="">
+												<p>Giảm sốc</p></li>
+											<li>${user.ten}</li>
+											<li><span style="color: blue;">${user.gia}<sup>đ</sup>/Hộp
+											</span> <del>
+													99.000<sup>đ</sup>
+												</del></li> <a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}"
+												class="btn border rounded-pill px-1 me-3"
+												style="font-size: 15px; display: block; margin: 0 auto; background: #3153DC; color: white;"><i
+												class="fa fa-shopping-bag  "></i> Thêm giỏ thuốc</a>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-3 py-3 py-md-0">
-						<div class="product-card-wrapper">
-							<div class="card">
-								<div
-									class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
-									style="top: 0px; left: 0px;">-20%</div>
-								<img src="<c:url value='/template/web/img/anhthuoc6.webp' />"
-									alt="">
-								<div class="card-body">
-									<div class="slider-product-one-content-item-text">
-										<li><img
-											src="<c:url value='/template/web/img/icon1.webp' />" alt="">
-											<p>Giảm sốc</p></li>
-										<li>Nước súc miệng Listerine Cool Mint giúp hơi thở thơm
-											mát</li>
-										<li><span style="color: blue;">56.400<sup>đ</sup>/Hộp
-										</span> <del>
-												99.000<sup>đ</sup>
-											</del></li>
+					</c:forEach>
 
-										<button type="submit" class="btn btn-primary btn-dark"
-											style="display: block; margin: 0 auto; background-color: #3153DC;">Thêm
-											vào giỏ thuốc</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 py-3 py-md-0">
-						<div class="product-card-wrapper">
-							<div class="card">
-								<div
-									class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
-									style="top: 0px; left: 0px;">-20%</div>
-								<img src="<c:url value='/template/web/img/anhthuoc7.webp' />"
-									alt="">
-								<div class="card-body">
-									<div class="slider-product-one-content-item-text">
-										<li><img
-											src="<c:url value='/template/web/img/icon1.webp' />" alt="">
-											<p>Giảm sốc</p></li>
-										<li>Nước súc miệng Listerine Cool Mint giúp hơi thở thơm
-											mát</li>
-										<li><span style="color: blue;">56.400<sup>đ</sup>/Hộp
-										</span> <del>
-												99.000<sup>đ</sup>
-											</del></li>
-
-										<button type="submit" class="btn btn-primary btn-dark"
-											style="display: block; margin: 0 auto; background-color: #3153DC;">Thêm
-											vào giỏ thuốc</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 py-3 py-md-0">
-						<div class="product-card-wrapper">
-							<div class="card">
-								<div
-									class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
-									style="top: 0px; left: 0px;">-20%</div>
-								<img src="<c:url value='/template/web/img/anhthuoc8.webp' />"
-									alt="">
-								<div class="card-body">
-									<div class="slider-product-one-content-item-text">
-										<li><img
-											src="<c:url value='/template/web/img/icon1.webp' />" alt="">
-											<p>Giảm sốc</p></li>
-										<li>Nước súc miệng Listerine Cool Mint giúp hơi thở thơm
-											mát</li>
-										<li><span style="color: blue;">56.400<sup>đ</sup>/Hộp
-										</span> <del>
-												99.000<sup>đ</sup>
-											</del></li>
-
-										<button type="submit" class="btn btn-primary btn-dark"
-											style="display: block; margin: 0 auto; background-color: #3153DC;">Thêm
-											vào giỏ thuốc</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 
