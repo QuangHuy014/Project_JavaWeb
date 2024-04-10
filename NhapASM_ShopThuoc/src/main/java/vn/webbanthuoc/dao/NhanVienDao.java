@@ -144,11 +144,11 @@ public class NhanVienDao{
 //		query.setParameter("password", password);
 //		return query.getSingleResult();
 //	}
-	public KhachHang checkLogin(String tendangnhap, String matkhau) {
+	public NhanVien checkLogin(String tendangnhap, String matkhau) {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    try {
-	        String jpaQuery = "SELECT u FROM NhanVien u WHERE u.tendangnhap = :NhanVien AND u.matkhau = :matkhau";
-	        TypedQuery<KhachHang> query = em.createQuery(jpaQuery, KhachHang.class);
+	        String jpaQuery = "SELECT u FROM NhanVien u WHERE u.tendangnhap = :tendangnhap AND u.matkhau = :matkhau";
+	        TypedQuery<NhanVien> query = em.createQuery(jpaQuery, NhanVien.class);
 	        query.setParameter("tendangnhap", tendangnhap);
 	        query.setParameter("matkhau", matkhau);
 	        return query.getSingleResult();
@@ -158,6 +158,7 @@ public class NhanVienDao{
 	        em.close();
 	    }
 	}
+
 
 
 
