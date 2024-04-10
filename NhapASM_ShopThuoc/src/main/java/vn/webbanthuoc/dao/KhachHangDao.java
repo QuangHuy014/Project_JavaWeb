@@ -55,20 +55,39 @@ public class KhachHangDao{
 
 
 
+//	public void update(KhachHang kh) {
+//		EntityManager em = JpaUtil.getEntityManager();
+//		try {
+//			em.getTransaction().begin();
+//			em.merge(kh);
+//			em.getTransaction().commit();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			em.getTransaction().rollback();
+//			throw e;
+//		} finally {
+//			em.close();
+//		}
+//	}
 	public void update(KhachHang kh) {
-		EntityManager em = JpaUtil.getEntityManager();
-		try {
-			em.getTransaction().begin();
-			em.merge(kh);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-			throw e;
-		} finally {
-			em.close();
-		}
+	    EntityManager em = JpaUtil.getEntityManager();
+	    try {
+	        em.getTransaction().begin();
+	        em.merge(kh);
+	        em.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        em.getTransaction().rollback();
+	        throw e;
+	    } finally {
+	        em.close();
+	    }
 	}
+
+
+
+	
+
 
 	public void delete(String id) throws Exception {
 		EntityManager em = JpaUtil.getEntityManager();

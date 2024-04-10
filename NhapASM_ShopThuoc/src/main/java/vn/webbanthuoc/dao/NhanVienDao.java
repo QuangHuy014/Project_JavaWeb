@@ -50,20 +50,34 @@ public class NhanVienDao{
 
 
 
+//	public void update(NhanVien nv) {
+//		EntityManager em = JpaUtil.getEntityManager();
+//		try {
+//			em.getTransaction().begin();
+//			em.merge(nv);
+//			em.getTransaction().commit();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			em.getTransaction().rollback();
+//			throw e;
+//		} finally {
+//			em.close();
+//		}
+//	}
 	public void update(NhanVien nv) {
-		EntityManager em = JpaUtil.getEntityManager();
-		try {
-			em.getTransaction().begin();
-			em.merge(nv);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-			throw e;
-		} finally {
-			em.close();
-		}
-	}
+        EntityManager em = JpaUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(nv);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
 
 	public void delete(String id) throws Exception {
 		EntityManager em = JpaUtil.getEntityManager();
@@ -85,6 +99,23 @@ public class NhanVienDao{
 //		User entity = em.find(User.class, id);
 //		return entity;
 //	}
+	
+//	public NhanVien findById(String tendangnhap) {
+//	    EntityManager em = JpaUtil.getEntityManager();
+//	    try {
+//	        String jpaQuery = "SELECT u FROM NhanVien u WHERE u.tendangnhap = :tendangnhap";
+//	        TypedQuery<NhanVien> query = em.createQuery(jpaQuery, NhanVien.class);
+//	        query.setParameter("tendangnhap", tendangnhap);
+//	        return query.getSingleResult();
+//	    } catch (NoResultException e) {
+//	        return null; // Trả về null nếu không tìm thấy user
+//	    } finally {
+//	        em.close();
+//	    }
+//	}
+	
+	
+	
 	public NhanVien findById(String tendangnhap) {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    try {
@@ -98,7 +129,11 @@ public class NhanVienDao{
 	        em.close();
 	    }
 	}
-
+	
+	
+	
+	
+	
 	
 
 //	public User checkLogin(String id, String password) {

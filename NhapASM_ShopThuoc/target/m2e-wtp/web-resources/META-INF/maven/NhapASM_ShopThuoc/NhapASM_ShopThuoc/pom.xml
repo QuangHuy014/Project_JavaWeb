@@ -22,12 +22,34 @@
 		</plugins>
 	</build>
 	<dependencies>
-		
+	<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.5.7.Final</version> <!-- Replace with the latest version -->
+</dependency>
 		<dependency>
+    <groupId>org.mindrot</groupId>
+    <artifactId>jbcrypt</artifactId>
+    <version>0.4</version>
+</dependency>
+	
+
+		<!--<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet.api.version}</version>
+		</dependency>-->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
 		</dependency>
+		<dependency>
+                <groupId>com.sun.mail</groupId>
+                <artifactId>javax.mail</artifactId>
+                <version>1.6.2</version>
+            </dependency>
+
 		
 		
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -54,7 +76,7 @@
     <type>pom</type>
     <scope>provided</scope>
 </dependency>
-  <dependency>
+ <dependency>
      <groupId>org.hibernate</groupId>
      <artifactId>hibernate-core</artifactId>
      <version>5.2.12.Final</version>
@@ -90,11 +112,16 @@
 			<version>1.2</version>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.5.7.Final</version>
-		</dependency>
+		</dependency>-->
+		<dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.6.5.Final</version>
+    </dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
