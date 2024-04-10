@@ -19,7 +19,7 @@ import vn.webbanthuoc.util.JpaUtil;
 /**
  * Servlet implementation class CartCellPhoneServletSolution1
  */
-@WebServlet({ "/addToCart1", "/cartPlus","/cartMinus"})
+@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus"})
 public class CartProduct extends HttpServlet {
 	Map<String, Thuoc> cartThuoc = new HashMap<String, Thuoc>();
 	@Override
@@ -54,7 +54,6 @@ public class CartProduct extends HttpServlet {
 				}else
 					cartThuoc.get(thuocId).setQuantity( cartThuoc.get(thuocId).getQuantity() - 1);
 			}
-			
 				
 		
 		req.getSession().setAttribute("cartThuocss", cartThuoc);

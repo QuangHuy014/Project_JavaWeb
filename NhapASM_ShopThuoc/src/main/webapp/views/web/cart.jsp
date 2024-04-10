@@ -87,15 +87,15 @@
                                     <div class="input-group quantity mt-4" style="width: 100px;">
                                     
                                         <div class="input-group-btn">
-                                            <button href="cartMinus?id=${entry.value.idThuoc}" class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                            <a  href="cartMinus?id=${entry.value.idThuoc}" class="btn btn-sm btn-minus rounded-circle bg-light border" >
                                             <i class="fa fa-minus"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                         <input type="text" class="form-control form-control-sm text-center border-0 "  value="${entry.value.quantity}">
                                         <div class="input-group-btn">
-                                            <button href="cartPlus?id=${entry.value.idThuoc}" class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                            <a href="cartPlus?id=${entry.value.idThuoc}" class="btn btn-sm btn-plus rounded-circle bg-light border">
                                                 <i class="fa fa-plus"></i>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
