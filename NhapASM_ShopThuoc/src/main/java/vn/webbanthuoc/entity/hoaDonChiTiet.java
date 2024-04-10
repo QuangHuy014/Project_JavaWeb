@@ -59,7 +59,7 @@ public class hoaDonChiTiet {
 		return SoLuong;
 	}
 
-	public void setSoLuong(String i) {
+	public void setSoLuong(int i) {
 		SoLuong = i;
 	}
 
