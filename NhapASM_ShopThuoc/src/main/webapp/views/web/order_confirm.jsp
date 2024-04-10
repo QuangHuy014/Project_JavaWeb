@@ -16,10 +16,11 @@
 <!-- 		<link href="/template/web/order_confirm/css/style.css"/> -->
 <link href="<c:url value='/template/web/order_confirm/css/style.css'/>"
 	rel="stylesheet">
+	
 	</head>
 	<body>
 		<div class="wrapper">
-            <form action="/checkout" method="POST" id="wizard">
+            <form action="/NhapASM_ShopThuoc/checkout" method="POST" id="wizard">
         		<!-- SECTION 1 -->
                 <h2></h2>
                 <section>
@@ -49,7 +50,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-holder w-100">
-									<input type="text" placeholder="diaChi" class="form-control">
+									<input type="text" placeholder="diaChi" name="diaChi" class="form-control">
 								</div>
 							</div>
 							<div class="form-row">

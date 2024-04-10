@@ -40,8 +40,7 @@ public class CheckoutSevlet extends HttpServlet {
 		
 	}
 
-	public class CheckoutServlet extends HttpServlet {
-	    private static final long serialVersionUID = 1L;
+
 
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	            throws ServletException, IOException {
@@ -52,16 +51,22 @@ public class CheckoutSevlet extends HttpServlet {
 	        String soDienThoai = request.getParameter("soDienThoai");
 
 	        // Tạo đối tượng hoaDon và lưu vào cơ sở dữ liệu
-	        hoaDon hoaDon = new hoaDon();
-	        hoaDon.setIDMaNV(9);
-	        hoaDon.setIDKhachHang(9);
-	        hoaDon.setIDHoaDon(1);
-	        hoaDon.setTenKhachHang(tenKhachHang);
-	        hoaDon.setDiaChiKhachHang(diaChi);
-	        hoaDon.setEmail(email);
-	        hoaDon.setSoDienThoaiKhachHang(soDienThoai);
-	        hoaDon.setNgayDH(new Date());
-	        hoaDonDao.create(hoaDon);
+	        try {
+	        	  hoaDon hoaDon = new hoaDon();
+	  	        hoaDon.setIDMaNV(9);
+	  	        hoaDon.setIDKhachHang(9);
+	  	        hoaDon.setIDHoaDon(1);
+	  	        hoaDon.setTenKhachHang(tenKhachHang);
+	  	        hoaDon.setDiaChiKhachHang(diaChi);
+	  	        hoaDon.setEmail(email);
+	  	        hoaDon.setSoDienThoaiKhachHang(soDienThoai);
+	  	        hoaDon.setNgayDH(new Date());
+	  	        hoaDonDao.create(hoaDon);
+			} catch (Exception e) {
+				System.out.println("loi insert hoa don ");
+				e.printStackTrace();
+			}
+	      
 	        
 
 	        // Lấy giỏ hàng từ session
@@ -85,7 +90,7 @@ public class CheckoutSevlet extends HttpServlet {
 	        response.sendRedirect("checkout-success.jsp");
 	    }
 	    
-	}
+	
 	    
 
 
