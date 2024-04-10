@@ -20,7 +20,7 @@ import vn.webbanthuoc.util.JpaUtil;
 /**
  * Servlet implementation class CartCellPhoneServletSolution1
  */
-@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus","/removeFromCart"})
+@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus"})
 public class CartProduct extends HttpServlet {
 	Map<String, Thuoc> cartThuoc = new HashMap<String, Thuoc>();
 	@Override
