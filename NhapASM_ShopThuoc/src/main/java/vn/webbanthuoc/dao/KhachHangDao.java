@@ -24,20 +24,6 @@ public class KhachHangDao{
 		super.finalize();
 	}
 
-//	public void create(User user) {
-//		EntityManager em = JpaUtils.getEntityManager();
-//		try {
-//			em.getTransaction().begin();
-//			em.persist(user);
-//			em.getTransaction().commit();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			em.getTransaction().rollback();
-//			throw e;
-//		} finally {
-//			em.close();
-//		}
-//	}
 	public void create(KhachHang kh) {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    try {
@@ -54,21 +40,25 @@ public class KhachHangDao{
 	}
 
 
-
 	public void update(KhachHang kh) {
-		EntityManager em = JpaUtil.getEntityManager();
-		try {
-			em.getTransaction().begin();
-			em.merge(kh);
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			em.getTransaction().rollback();
-			throw e;
-		} finally {
-			em.close();
-		}
+	    EntityManager em = JpaUtil.getEntityManager();
+	    try {
+	        em.getTransaction().begin();
+	        em.merge(kh);
+	        em.getTransaction().commit();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        em.getTransaction().rollback();
+	        throw e;
+	    } finally {
+	        em.close();
+	    }
 	}
+
+
+
+	
+
 
 	public void delete(String id) throws Exception {
 		EntityManager em = JpaUtil.getEntityManager();
@@ -85,11 +75,7 @@ public class KhachHangDao{
 		}
 	}
 
-//	public User findById(String id) {
-//		EntityManager em = JpaUtils.getEntityManager();
-//		User entity = em.find(User.class, id);
-//		return entity;
-//	}
+
 	public KhachHang findById(String tendangnhap) {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    try {
@@ -106,14 +92,7 @@ public class KhachHangDao{
 
 	
 
-//	public User checkLogin(String id, String password) {
-//		EntityManager em = JpaUtils.getEntityManager();
-//		String japl = "select u from User u where u.Id = :Id and u.Password = :Password";
-//		TypedQuery<User> query = em.createQuery(japl, User.class);
-//		query.setParameter("id", id);
-//		query.setParameter("password", password);
-//		return query.getSingleResult();
-//	}
+
 	public KhachHang checkLogin(String tendangnhap, String matkhau) {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    try {
@@ -144,7 +123,7 @@ public class KhachHangDao{
 	    return query.getResultList();
 	}
 
-//// ghi chú
+
 	public List<KhachHang> findAll(int page, int pageSize) {
 	    EntityManager em = JpaUtil.getEntityManager();
 	    TypedQuery<KhachHang> query = em.createNamedQuery("KhachHang.findAll", KhachHang.class);
@@ -153,15 +132,7 @@ public class KhachHangDao{
 	    return query.getResultList();
 	}
 
-//	public List<User> findByFullname(String fullname, int page, int pageSize) {
-//	    EntityManager em = JpaUtils.getEntityManager();
-//	    String jpaQuery = "SELECT u FROM User u WHERE u.fullname LIKE :fullname";
-//	    TypedQuery<User> query = em.createQuery(jpaQuery, User.class);
-//	    query.setParameter("fullname", "%" + fullname + "%");
-//	    query.setFirstResult(page * pageSize);
-//	    query.setMaxResults(pageSize);
-//	    return query.getResultList();
-//	}
+
 
 	public long countAll() {
 	    EntityManager em = JpaUtil.getEntityManager();
