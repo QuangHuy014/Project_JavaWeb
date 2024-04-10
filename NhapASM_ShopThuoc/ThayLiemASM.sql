@@ -73,7 +73,7 @@ CREATE TABLE [HoaDonChiTiet] (
   [IDHoaDon] int not null,
   [TenThuoc] NVARCHAR(255) not null,
   [IDThuoc] NVARCHAR(50) not null,
-  [SoLuong] NVARCHAR(255) not null,
+  [SoLuong] int not null,
   [Gia] Float not null,
   [DonVi] NVARCHAR(255) not null,
   FOREIGN KEY ([IDHoaDon]) REFERENCES [HoaDon]([IDHoaDon]) ON DELETE NO ACTION ON UPDATE CASCADE,
