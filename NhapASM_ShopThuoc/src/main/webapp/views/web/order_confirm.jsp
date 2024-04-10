@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<div class="wrapper">
-            <form action="" id="wizard">
+            <form action="checkout" method="post" id="wizard">
         		<!-- SECTION 1 -->
                 <h2></h2>
                 <section>
@@ -52,55 +52,21 @@
 									<input type="text" placeholder="diaChi" class="form-control">
 								</div>
 							</div>
-							
+							<div class="form-row">
+								<div class="form-holder w-100">
+									<button type=submit>Order</button>
+								</div>
+							</div>
 						</div>
 					</div>
                 </section>
 
 				
 
-                <!-- SECTION 3 -->
-                <h2></h2>
-                <section>
-                    <div class="inner">
-						<div class="image-holder">
-								<img src="<c:url value='/template/web/order_confirm/images/form-wizard-3.jpg'/>" alt="">
-
-						</div>
-						<div class="form-content">
-							<div class="form-header">
-								<h3>Registration</h3>
-							</div>
-							<p>Send an optional message</p>
-							<div class="form-row">
-								<div class="form-holder w-100">
-									<textarea name="" id="" placeholder="Your messagere here!" class="form-control" style="height: 99px;"></textarea>
-								</div>
-							</div>
-							<div class="checkbox-circle mt-24">
-								<label>
-									<input type="checkbox" checked>  Please accept <a href="#">terms and conditions ?</a>
-									<span class="checkmark"></span>
-								</label>
-							</div>
-						</div>
-					</div>
-                </section>
+                
             </form>
 		</div>
 
-		<!-- JQUERY -->
-<!-- 		<script src="/template/web/order_confirm/js/jquery-3.3.1.min.js"></script> -->
-<script
-	src="<c:url value='/template/web/order_confirm/js/jquery-3.3.1.min.js'/>"></script>
-		<!-- JQUERY STEP -->
-<!-- 		<script src="/template/web/order_confirm/js/jquery.steps.js"></script> -->
-		<script
-	src="<c:url value='/template/web/order_confirm/js/jquery.steps.js'/>"></script>
-	
-		<script
-	src="<c:url value='/template/web/order_confirm/js/main.js'/>"></script>
-<!-- 		<script src="/template/web/order_confirm/js/main.js"></script> -->
-		<!-- Template created and distributed by Colorlib -->
+
 </body>
 </html>
