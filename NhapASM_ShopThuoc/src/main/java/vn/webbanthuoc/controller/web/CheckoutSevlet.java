@@ -71,17 +71,23 @@ public class CheckoutSevlet extends HttpServlet {
 
 	        // Lấy giỏ hàng từ session
 	        Map<String, Thuoc> cartThuoc = (Map<String, Thuoc>) request.getSession().getAttribute("cartThuocss");
-
-	        // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
-	        for (Thuoc thuoc : cartThuoc.values()) {
-	            hoaDonChiTiet hoaDonChiTiet = new hoaDonChiTiet();
-	            hoaDonChiTiet.setTenThuoc(thuoc.getTen());
-	            hoaDonChiTiet.setIDThuoc(thuoc.getIdThuoc());
-	            hoaDonChiTiet.setSoLuong(thuoc.getQuantity());
-	            hoaDonChiTiet.setGia(thuoc.getGia());
-	            hoaDonChiTiet.setDonVi(thuoc.getDonVi());
-	            HoaDonChiTietDao.save(hoaDonChiTiet);
-	        }
+try {
+	   // Lưu từng sản phẩm trong giỏ hàng vào cơ sở dữ liệu
+    for (Thuoc thuoc : cartThuoc.values()) {
+        hoaDonChiTiet hoaDonChiTiet = new hoaDonChiTiet();
+        hoaDonChiTiet.setTenThuoc(thuoc.getTen());
+        hoaDonChiTiet.setIDThuoc(thuoc.getIdThuoc());
+        hoaDonChiTiet.setSoLuong(thuoc.getQuantity());
+        hoaDonChiTiet.setGia(thuoc.getGia());
+        hoaDonChiTiet.setDonVi(thuoc.getDonVi());
+        HoaDonChiTietDao.save(hoaDonChiTiet);
+    }
+	
+} catch (Exception e) {
+	System.out.println("loi them hoa don chi tiet");
+	e.printStackTrace();
+}
+	     
 
 	        // Sau khi lưu thành công, xóa giỏ hàng khỏi session
 	        request.getSession().removeAttribute("cartThuocss");
