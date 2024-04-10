@@ -1,24 +1,15 @@
 ﻿create database DuAnJava4
 use DuAnJava4
 
-drop table [NhanVien]
-drop table [KhachHang]
-drop table  NhomThuoc
-drop table [HoaDon]
-drop table [Thuoc]
-
-drop table [HoaDonChiTiet]
-
 select * from [NhanVien]
 select * from [HoaDon]
 select * from [Thuoc]
-select * from NhomThuoc
 select * from [KhachHang]
 select * from [HoaDon]
 select * from [HoaDonChiTiet]
 
 CREATE TABLE [NhanVien] (
-  [IDMaNV] int primary key identity,
+  [IDMaNV] int primary key,
   [Ten] NVARCHAR(100) NOT NULL,
   [Age] int NOT NULL,
   [Birthday] date NOT NULL,
@@ -30,10 +21,8 @@ CREATE TABLE [NhanVien] (
   [TenDangNhap] NVARCHAR(100) NOT NULL
 );
 
-
-
 CREATE TABLE [KhachHang] (
-  [IDKhachHang] int primary key identity,
+  [IDKhachHang] int primary key,
   [TenDangNhap] NVARCHAR(100) NOT NULL,
   [MatKhau] NVARCHAR(100) NOT NULL,
   [Ten] NVARCHAR(100) NOT NULL,
@@ -66,16 +55,21 @@ CREATE TABLE [Thuoc] (
 );
 
 CREATE TABLE [HoaDon] (
-  [IDHoaDon] int primary key identity not null,
-  [iDKhachHang] int not null,
-  [IDMaNV] int not null,
-  [NgayDH] Date not null,
+  [IDHoaDon] int PRIMARY KEY NOT NULL,
+  [IDKhachHang] int NOT NULL,
+  [IDMaNV] int NOT NULL,
+  [NgayDH] DATE NOT NULL,
+  [Email] NVARCHAR(255), -- Thêm cột Email của khách hàng
+  [TenKhachHang] NVARCHAR(100), -- Thêm cột Tên khách hàng
+  [DiaChiKhachHang] NVARCHAR(255), -- Thêm cột Địa chỉ của khách hàng
+  [SoDienThoaiKhachHang] NVARCHAR(20), -- Thêm cột Số điện thoại của khách hàng
   FOREIGN KEY ([IDMaNV]) REFERENCES [NhanVien]([IDMaNV]) ON DELETE NO ACTION ON UPDATE CASCADE,
-  FOREIGN KEY (iDKhachHang) REFERENCES [KhachHang](iDKhachHang) ON DELETE NO ACTION ON UPDATE CASCADE
+  FOREIGN KEY ([IDKhachHang]) REFERENCES [KhachHang]([IDKhachHang]) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
+
 CREATE TABLE [HoaDonChiTiet] (
-  [IDHoaDonChiTiet] int primary key identity,
+  [IDHoaDonChiTiet] int primary key,
   [IDHoaDon] int not null,
   [TenThuoc] NVARCHAR(255) not null,
   [IDThuoc] NVARCHAR(50) not null,
@@ -93,23 +87,22 @@ delete NhanVien
 delete NhomThuoc
 
 -- Thêm dữ liệu vào bảng NhanVien
-INSERT INTO NhanVien ( Ten, Age, Birthday, VaiTro, DiaChi, GioiTinh, TrangThai, MatKhau, TenDangNhap)
+INSERT INTO NhanVien (IDMaNV, Ten, Age, Birthday, VaiTro, DiaChi, GioiTinh, TrangThai, MatKhau, TenDangNhap)
 VALUES 
-( 'Nguyen Van A', 30, '1992-01-15', 1, '123 Duong ABC', 1, 1, 'password123', 'nvana'),
-('Tran Thi B', 35, '1987-05-20', 0, '456 Duong XYZ', 0, 1, 'pass321', 'ttb'),
-( 'Le Van C', 25, '1997-09-10', 1, '789 Duong DEF', 1, 1, 'abc123', 'lvc'),
-( 'Pham Thi D', 40, '1982-03-25', 0, '101 Duong GHI', 0, 1, 'dpass456', 'ptd'),
-( 'Hoang Duc E', 28, '1994-11-05', 1, '111 Duong JKL', 1, 1, 'edf123', 'hde');
+(1, 'Nguyen Van A', 30, '1992-01-15', 1, '123 Duong ABC', 1, 1, 'password123', 'nvana'),
+(2, 'Tran Thi B', 35, '1987-05-20', 0, '456 Duong XYZ', 0, 1, 'pass321', 'ttb'),
+(3, 'Le Van C', 25, '1997-09-10', 1, '789 Duong DEF', 1, 1, 'abc123', 'lvc'),
+(4, 'Pham Thi D', 40, '1982-03-25', 0, '101 Duong GHI', 0, 1, 'dpass456', 'ptd'),
+(5, 'Hoang Duc E', 28, '1994-11-05', 1, '111 Duong JKL', 1, 1, 'edf123', 'hde');
 
 -- Thêm dữ liệu vào bảng KhachHang
-
-INSERT INTO KhachHang (TenDangNhap, MatKhau, Ten, GioiTinh)
+INSERT INTO KhachHang (IDKhachHang, TenDangNhap, MatKhau, Ten, GioiTinh)
 VALUES 
-('kh1', 'kh1pass', 'Customer 1', 1),
-( 'kh2', 'kh2pass', 'Customer 2', 0),
-( 'kh3', 'kh3pass', 'Customer 3', 1),
-( 'kh4', 'kh4pass', 'Customer 4', 0),
-('kh5', 'kh5pass', 'Customer 5', 1);
+(1, 'kh1', 'kh1pass', 'Customer 1', 1),
+(2, 'kh2', 'kh2pass', 'Customer 2', 0),
+(3, 'kh3', 'kh3pass', 'Customer 3', 1),
+(4, 'kh4', 'kh4pass', 'Customer 4', 0),
+(5, 'kh5', 'kh5pass', 'Customer 5', 1);
 
 -- Thêm dữ liệu vào bảng NhomThuoc
 INSERT INTO NhomThuoc (IDNhomThuoc, TenLoai)
@@ -122,12 +115,7 @@ VALUES
 
 -- Thêm dữ liệu vào bảng Thuoc
 
-drop table NhanVien
-select * from Thuo
-select * from NhanVien
-delete  from Thuoc where IDThuoc='t10';
-
-
+delete Thuoc
 INSERT INTO Thuoc (IDThuoc, Ten, IDNhomThuoc, SoLuong, Gia, IDKhachHang, IDMaNV, Hinh, NguonGoc, CongDung, NgaySanXuat, isActive, BaoQuan, DonVi)
 VALUES 
 ('t1', N'Viên uống Perfect White Jpanwell giảm triệu chứng rối loạn', 'nt1', 1, 2235000, NULL, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/300x300/https://cms-prod.s3-sgn09.fptcloud.com/00021929_perfect_white_60v_3739_600f_large_6794b33ce3.JPG', N'Nguồn gốc 1', N' tiêu hóa (2 vỉ x 10 viên)', '2024-04-03', 1, N'Bảo quản 1', N'Hộp lớn'),
