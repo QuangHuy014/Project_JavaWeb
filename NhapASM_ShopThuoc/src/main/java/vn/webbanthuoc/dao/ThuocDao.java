@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -133,6 +134,12 @@ public class ThuocDao {
 	    Thuoc entity = query.getSingleResult();
 	    return entity;
 	}
+	
+	
+
+
+
+
 	
 	public List<Thuoc> Filter3Product() {
 	    EntityManager em = JpaUtil.getEntityManager();
