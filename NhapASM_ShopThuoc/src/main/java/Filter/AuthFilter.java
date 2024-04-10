@@ -41,12 +41,10 @@ public class AuthFilter implements Filter {
             // Nếu đã đăng nhập, cho phép request tiếp tục
             chain.doFilter(request, response);
         } else {
-            // Nếu chưa đăng nhập, chuyển hướng đến trang login
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/Login");
         }
     }
 
     public void destroy() {
-        // Hủy - không cần làm gì trong ví dụ này
     }
 }

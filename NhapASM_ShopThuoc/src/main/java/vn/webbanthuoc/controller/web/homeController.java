@@ -18,7 +18,7 @@ import vn.webbanthuoc.entity.Thuoc;
 /**
 * Servlet implementation class homeController
 */
-@WebServlet({"/homeController","/product-Detail","/client/addToCart"})
+@WebServlet({"/homeController","/product-Detail"})
 public class homeController extends HttpServlet {
    private static final long serialVersionUID = 1L;
    ThuocDao thuocDao = new ThuocDao();
@@ -40,10 +40,10 @@ public class homeController extends HttpServlet {
                    rd.forward(request, response);
                    break;
                }
-              case "/client/addToCart": {
-                  addToCart(request, response);
-                  break;
-               }
+//              case "/client/addToCart": {
+//                  addToCart(request, response);
+//                  break;
+//               }
                default:
                    throw new IllegalArgumentException("Unexpected value: " + action);
            }
@@ -70,8 +70,8 @@ public class homeController extends HttpServlet {
        HttpSession session = request.getSession(false);
        if (session == null || session.getAttribute("KhachHang") == null) {
            // Nếu không có, chuyển hướng đến trang đăng nhập
-           response.sendRedirect(request.getContextPath() + "/Login");
-           return;
+//           response.sendRedirect(request.getContextPath() + "/Login");
+//           return;
        }
 
        // Nếu có, tiếp tục thêm vào giỏ hàng
