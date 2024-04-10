@@ -40,9 +40,9 @@ public class homeController extends HttpServlet {
                    rd.forward(request, response);
                    break;
                }
-               case "/client/addToCart": {
-                   addToCart(request, response);
-                   break;
+              case "/client/addToCart": {
+                  addToCart(request, response);
+                  break;
                }
                default:
                    throw new IllegalArgumentException("Unexpected value: " + action);
