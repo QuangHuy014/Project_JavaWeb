@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -205,7 +207,7 @@
 									</div>
 								</div>
 
-								
+
 								<div class="col-lg-12">
 									<h4 class="mb-3">Sản phẩm yêu thích</h4>
 									<div
@@ -324,10 +326,26 @@
 											style="background-color: #FFFFFF;">
 											<div
 												class="fruite-img d-flex justify-content-center align-items-center">
-												<a
-													href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
-													src="${user.hinh}" class="img-fluid w-100 rounded-top"
-													alt=""></a>
+												<c:if
+													test="${fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+													<a
+														href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+														src="${user.hinh}" class="img-fluid w-100 rounded-top"
+														alt=""></a>
+
+												</c:if>
+
+												<!-- Nếu không, hiển thị hình ảnh từ đường dẫn cố định -->
+												<c:if
+													test="${not fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+
+													<a
+														href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+														src="<c:url value='/template/web/img/${user.hinh}' />"
+														class="img-fluid w-100 rounded-top" alt=""></a>
+
+
+												</c:if>
 											</div>
 											<div
 												class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
@@ -348,8 +366,7 @@
 													</div>
 													<div class="d-flex  justify-content-between ">
 														<a href="#" class="btn border rounded-pill px-3 me-3"
-															style="font-size: 13px"> ${user.donVi}</a> 
-															<a
+															style="font-size: 13px"> ${user.donVi}</a> <a
 															href="addToCart1?id=${user.idThuoc}&action=addToCart1"
 															class="btn border border-info rounded-pill px-1 text-info me-3"
 															style="font-size: 15px"><i

@@ -26,20 +26,17 @@ public class hoaDon {
 	private Date ngayDH;
 
 	@Column(name = "Email", nullable = false)
-	
 	private String email;
 	// Thêm trường Email của khách hàng
 
 	@Column(name = "TenKhachHang", nullable = false)
-
 	private String tenKhachHang;
 	// Thêm trường Tên khách hàng
 
 	@Column(name = "DiaChiKhachHang", nullable = false)
-	
 	private String diaChiKhachHang;
-	@Column(name = "SoDienThoaiKhachHang", nullable = false)
 	
+	@Column(name = "SoDienThoaiKhachHang", nullable = false)
 	private String soDienThoaiKhachHang; // Thêm trường Địa chỉ của khách hàng
 
 	public hoaDon() {
