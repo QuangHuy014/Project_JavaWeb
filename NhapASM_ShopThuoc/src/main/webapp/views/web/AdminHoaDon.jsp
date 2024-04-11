@@ -247,20 +247,30 @@
 								<table class="account-table table">
 									<thead>
 										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">Name Product</th>
-											<th scope="col">Image</th>
-											<th scope="col">Prices</th>
-											<th scope="col">DateProduct</th>
-											<th scope="col">Effective</th>
-											<th scope="col">Active</th>
+											<th scope="col">ID Hóa Đơn</th>
+											<th scope="col">ID Khách Hàng</th>
+											<th scope="col">ID MaNV</th>
+											<th scope="col">NgayDH</th>
+											<th scope="col">Email</th>
+											<th scope="col">Tên Khách Hàng</th>
+											<th scope="col">Địa Chỉ Khách Hàng</th>
+										<th scope="col">Số Điện Thoại Khách Hàng</th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<c:forEach items="${hoaDonList}" var="item">
+										<c:forEach items="${ListHoaDon}" var="item">
 										<tr>
 										<td>item.IDHoaDon</td>
+										<td>item.IDKhachHang</td>
+										<td>item.IDMaNV</td>
+										<td>item.NgayDH</td>
+										<td>item.Email</td>
+										<td>item.TenKhachHang</td>
+										<td>item.DiaChiKhachHang</td>
+										<td>item.SoDienThoaiKhachHang</td>
+										
+										
 										</tr>
 										<%-- 	<tr>
 												<td>${item.idThuoc}</td>
