@@ -10,7 +10,7 @@
 
 
 <!-- Navbar start -->
-<div class="container-fluid fixed-top bg-primary"
+ <div class="container-fluid fixed-top bg-primary"
 	style="top: 0px; padding-top: 30px;" style="background-color: #2167dd;">
 	<div class="container px-0" style="background-color: #2167dd;">
 		<nav class="navbar navbar-light  navbar-expand-xl"
@@ -56,12 +56,15 @@
 						href="../fruitables-1.0.0/login-form-20/login-form-20/index.html"
 						class="my-auto"> <i class="fas fa-user fa-2x"></i>
 					</a>
-					<c:if test="${not empty sessionScope.user}">
-						<a class="nav-link nav-link-1 " data-toggle="modal"
-							data-target="#changePassModel">Welcome,
-							${sessionScope.user.id }</a>
-
-					</c:if>
+					 <c:if test="${not empty sessionScope.KhachHang}">
+                        <a class="nav-link nav-link-1 " data-toggle="modal"
+                            data-target="#changePassModel">${sessionScope.KhachHang.ten}</a>
+                    </c:if>
+                    <c:if test="${not empty sessionScope.NhanVien}">
+                        <a class="nav-link nav-link-1 " data-toggle="modal"
+                            data-target="#changePassModel">${sessionScope.NhanVien.ten}</a>
+                    </c:if>
+                    <a href="logout" class="nav-item nav-link text-primary">Logout</a>
 				</div>
 			</div>
 		</nav>
