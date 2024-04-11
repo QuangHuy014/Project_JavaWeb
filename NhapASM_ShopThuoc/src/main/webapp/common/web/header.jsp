@@ -56,11 +56,15 @@
 						href="../fruitables-1.0.0/login-form-20/login-form-20/index.html"
 						class="my-auto"> <i class="fas fa-user fa-2x"></i>
 					</a>
-					<c:if test="${not empty sessionScope.KhachHang}">
-						<a class="nav-link nav-link-1 " data-toggle="modal"
-							data-target="#changePassModel">${sessionScope.KhachHang.ten}</a>
-
-					</c:if>
+					 <c:if test="${not empty sessionScope.KhachHang}">
+                        <a class="nav-link nav-link-1 " data-toggle="modal"
+                            data-target="#changePassModel">${sessionScope.KhachHang.ten}</a>
+                    </c:if>
+                    <c:if test="${not empty sessionScope.NhanVien}">
+                        <a class="nav-link nav-link-1 " data-toggle="modal"
+                            data-target="#changePassModel">${sessionScope.NhanVien.ten}</a>
+                    </c:if>
+                    <a href="logout" class="nav-item nav-link text-primary">Logout</a>
 				</div>
 			</div>
 		</nav>
