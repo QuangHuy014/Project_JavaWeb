@@ -16,7 +16,6 @@ import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.NhomThuoc;
 import vn.webbanthuoc.entity.Thuoc;
 import vn.webbanthuoc.entity.hoaDon;
-
 @WebServlet({ "/showHoaDon" })
 public class adminHoaDon extends HttpServlet {
 
@@ -64,7 +63,7 @@ public class adminHoaDon extends HttpServlet {
 		if (request.getMethod().equalsIgnoreCase("get")) {
 			HoaDonDao hoadon = new HoaDonDao();
 			List<hoaDon> ListSp1 = hoadon.findAll();
-			request.setAttribute("ListHoaDon", ListSp1);
+			request.setAttribute("ListHoaDonn", ListSp1);
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/AdminHoaDon.jsp");
 			rd.forward(request, response);
 		}

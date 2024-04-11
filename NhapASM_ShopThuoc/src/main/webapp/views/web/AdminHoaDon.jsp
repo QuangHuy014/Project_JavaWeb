@@ -245,7 +245,6 @@
 
 							<div class="table-responsive">
 								<table class="account-table table">
-									<thead>
 										<tr>
 											<th scope="col">ID Hóa Đơn</th>
 											<th scope="col">ID Khách Hàng</th>
@@ -259,16 +258,16 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${ListHoaDon}" var="item">
+										<c:forEach items="${ListHoaDonn}" var="item">
 										<tr>
-										<td>item.IDHoaDon</td>
-										<td>item.IDKhachHang</td>
-										<td>item.IDMaNV</td>
-										<td>item.NgayDH</td>
-										<td>item.Email</td>
-										<td>item.TenKhachHang</td>
-										<td>item.DiaChiKhachHang</td>
-										<td>item.SoDienThoaiKhachHang</td>
+										<td>${item.IDHoaDon}</td>
+										<td>${item.IDKhachHang}</td>
+										<td>${item.IDMaNV}</td>
+										<td>${item.NgayDH}</td>
+										<td>${item.Email}</td>
+										<td>${item.TenKhachHang}</td>
+										<td>${item.DiaChiKhachHang}</td>
+										<td>${item.SoDienThoaiKhachHang}</td>
 										
 										
 										</tr>

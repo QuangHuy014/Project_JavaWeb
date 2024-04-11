@@ -24,14 +24,22 @@ public class hoaDon {
     private String SoDienThoaiKhachHang; // Thêm trường Số điện thoại của khách hàng
 
 
-	public hoaDon(int IDHoaDon, int iDKhachHang, int IDMaNV, Date NgayDH) {
-        this.IDHoaDon = IDHoaDon;
-        this.IDKhachHang = iDKhachHang;
-        this.IDMaNV = IDMaNV;
-        this.NgayDH = NgayDH;
-    }
 
-    public hoaDon() {
+
+    public hoaDon(int iDHoaDon, int iDKhachHang, int iDMaNV, Date ngayDH, String email, String tenKhachHang,
+			String diaChiKhachHang, String soDienThoaiKhachHang) {
+		super();
+		IDHoaDon = iDHoaDon;
+		IDKhachHang = iDKhachHang;
+		IDMaNV = iDMaNV;
+		NgayDH = ngayDH;
+		Email = email;
+		TenKhachHang = tenKhachHang;
+		DiaChiKhachHang = diaChiKhachHang;
+		SoDienThoaiKhachHang = soDienThoaiKhachHang;
+	}
+
+	public hoaDon() {
         super();
     }
 

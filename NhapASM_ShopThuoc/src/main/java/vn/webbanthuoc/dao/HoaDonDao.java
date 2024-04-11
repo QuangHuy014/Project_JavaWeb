@@ -85,7 +85,7 @@ public class HoaDonDao {
 
     public List<hoaDon> findAll() {
         EntityManager em = JpaUtil.getEntityManager();
-        TypedQuery<hoaDon> query = em.createNamedQuery("SELECT hd FROM hoaDon hd", hoaDon.class);
+        TypedQuery<hoaDon> query = em.createQuery("SELECT hd FROM hoaDon hd", hoaDon.class);
         return query.getResultList();
     }
 
