@@ -201,8 +201,8 @@
 				class="col-md-3 col-lg-3 d-md-block sidebar collapse">
 				<div class="position-sticky py-4 px-3 sidebar-sticky">
 					<ul class="nav flex-column h-100">
-						<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="index.html"> <i class="bi-house-fill me-2"></i> List
+						<li class="nav-item"><a class="nav-link" aria-current=""
+							href="/showHoaDon"> <i class="bi-house-fill me-2"></i> List
 								Bill
 						</a></li>
 
@@ -243,7 +243,7 @@
 					<div class="col-lg-12 col-12">
 						<div class="custom-block bg-white">
 
-							<div class="table-responsive">
+							<div class="table-responsive">s
 								<table class="account-table table">
 									<thead>
 										<tr>
