@@ -62,12 +62,12 @@ public class homeController extends HttpServlet {
     }
 
     private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        // Kiểm tra session có thông tin đăng nhập KhachHang hoặc NhanVien không
-//        HttpSession session = request.getSession(false);
-//        if (session == null || session.getAttribute("KhachHang") == null) {
-//            // Nếu không có, chuyển hướng đến trang đăng nhập
-//            response.sendRedirect(request.getContextPath() + "/Login");
-//            return;
-//        }
+        // Kiểm tra session có thông tin đăng nhập KhachHang hoặc NhanVien không
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("KhachHang") == null) {
+            // Nếu không có, chuyển hướng đến trang đăng nhập
+            response.sendRedirect(request.getContextPath() + "/Login");
+            return;
+        }
     }}
         // Nếu có, tiếp tục thêm vào giỏ hàng
