@@ -80,9 +80,6 @@ CREATE TABLE [HoaDonChiTiet] (
   FOREIGN KEY ([IDThuoc]) REFERENCES [Thuoc]([IDThuoc]) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-
-
-
 delete NhanVien
 delete NhomThuoc
 
