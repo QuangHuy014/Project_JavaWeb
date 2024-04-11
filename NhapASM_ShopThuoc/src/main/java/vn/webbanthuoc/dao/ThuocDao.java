@@ -129,11 +129,22 @@ public class ThuocDao {
 
 	public Thuoc findById(String id) {
 	    EntityManager em = JpaUtil.getEntityManager();
-	    TypedQuery<Thuoc> query = em.createQuery("SELECT t FROM Thuoc t WHERE t.id = :id", Thuoc.class);
-	    query.setParameter("id", id);
-	    Thuoc entity = query.getSingleResult();
-	    return entity;
+	    try {
+	        TypedQuery<Thuoc> query = em.createQuery("SELECT t FROM Thuoc t WHERE t.idThuoc = :id", Thuoc.class);
+	        query.setParameter("id", id);
+	        return query.getSingleResult();
+	    } catch (NoResultException e) {
+	        return null; // Trả về null nếu không tìm thấy
+	    } finally {
+	        em.close();
+	    }
 	}
+
+	
+
+
+
+
 	
 	
 

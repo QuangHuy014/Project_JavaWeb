@@ -86,7 +86,8 @@
 								<td>
 									<p class="mb-0 mt-4">${entry.value.gia}</p>
 								</td>
-								<td>
+
+								 <td>
 									<div class="input-group quantity mt-4" style="width: 100px;">
 
 										<div class="input-group-btn">
@@ -105,7 +106,10 @@
 											</a>
 										</div>
 									</div>
-								</td>
+								</td> 
+
+
+
 								<td><fmt:formatNumber type="number" maxFractionDigits="3"
 										value="${entry.value.gia * entry.value.quantity}" /> <c:set
 										var="sum"
@@ -148,7 +152,7 @@
 							</div>
 							<a
 								class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-							  href="checkout" >Proceed Checkout</a>
+								href="checkout">Proceed Checkout</a>
 						</div>
 					</div>
 				</div>

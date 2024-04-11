@@ -220,7 +220,4 @@ public class Thuoc {
 		this.quantity = quantity;
 	}
 	
-	// Định nghĩa phương thức getTenThuoc
-    
-	
 }
