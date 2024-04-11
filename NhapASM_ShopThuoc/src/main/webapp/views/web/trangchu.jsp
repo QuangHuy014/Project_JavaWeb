@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -204,14 +206,34 @@
 							class="rounded position-relative fruite-item border border-primary-subtle rounded-bottom"
 							style="background-color: #FFFFFF;">
 							<div class="fruite-img">
-								<a
+								<%-- <a
 									href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
-									src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a>
+									src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a> --%>
 								<%-- <a
 									href="/BanNhapASMThuoc/sanPhamChiTietController?id=${user.idThuoc}">
 									<img src="${user.hinh}" class="img-fluid w-100 rounded-top"
 									alt="">
 								</a> --%>
+
+								<c:if
+									test="${fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+									<a
+										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+										src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a>
+
+								</c:if>
+
+								<!-- Nếu không, hiển thị hình ảnh từ đường dẫn cố định -->
+								<c:if
+									test="${not fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+
+									<a
+										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+										src="<c:url value='/template/web/img/${user.hinh}' />"
+										class="img-fluid w-100 rounded-top" alt=""></a>
+
+
+								</c:if>
 
 							</div>
 
@@ -241,8 +263,8 @@
 									class="btn border border-info rounded-pill px-1 text-info me-3"
 									style="font-size: 15px; display: block; margin: 0 auto;"><i
 									class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
-									
-									
+
+
 
 							</div>
 						</div>
@@ -319,7 +341,26 @@
 									<div
 										class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
 										style="top: 0px; left: 0px;">-20%</div>
-									<img src="${user.hinh}" alt="">
+									<c:if
+									test="${fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+									<a
+										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+										src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a>
+
+								</c:if>
+
+								<!-- Nếu không, hiển thị hình ảnh từ đường dẫn cố định -->
+								<c:if
+									test="${not fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+
+									<a
+										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+										src="<c:url value='/template/web/img/${user.hinh}' />"
+										class="img-fluid w-100 rounded-top" alt=""></a>
+
+
+								</c:if>
+									
 									<div class="card-body">
 										<div class="slider-product-one-content-item-text">
 											<li><img

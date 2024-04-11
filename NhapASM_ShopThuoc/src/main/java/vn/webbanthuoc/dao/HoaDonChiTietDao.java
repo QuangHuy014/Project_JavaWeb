@@ -1,12 +1,25 @@
 package vn.webbanthuoc.dao;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import vn.webbanthuoc.entity.hoaDon;
 import vn.webbanthuoc.entity.hoaDonChiTiet;
 import vn.webbanthuoc.util.JpaUtil;
 
 public class HoaDonChiTietDao {
+	
+	
+	
+	 public List<hoaDonChiTiet> findHoadonAll() {
+	        EntityManager em = JpaUtil.getEntityManager();
+	        String jpql = "SELECT hdct FROM hoaDonChiTiet hdct ";
+	        TypedQuery<hoaDonChiTiet> query = em.createQuery(jpql, hoaDonChiTiet.class);
+	        return query.getResultList();
+	    }
 
     public void save(hoaDonChiTiet hoaDonChiTiet) {
     	   EntityManager em = JpaUtil.getEntityManager();
