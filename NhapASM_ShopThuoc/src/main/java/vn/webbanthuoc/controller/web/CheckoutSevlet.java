@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,8 +41,24 @@ public class CheckoutSevlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/views/web/order_confirm.jsp").forward(request, response);
+		 // Check if the user is logged in
+        Object user = request.getSession().getAttribute("User");
+        if (user == null) {
+            // User is not logged in, redirect to the login page
+         
+            RequestDispatcher rd = request.getRequestDispatcher("/views/web/tranglogin.jsp");
+    		rd.forward(request, response);
+            return;
+        }
 
-	}
+        // User is logged in, proceed with checkout
+        // Add your logic for checkout processing here
+
+        // Redirect to the checkout page
+        response.sendRedirect(request.getContextPath() + "/checkout.jsp");
+    }
+
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -83,7 +100,9 @@ try {
 	            hoaDonChiTiet.setGia(thuoc.getGia());
 	            hoaDonChiTiet.setDonVi(thuoc.getDonVi());
 	            HoaDonChiTietDao.save(hoaDonChiTiet);
+	            
 	        }
+	        
 } catch (Exception e) {
 	System.out.println("loi khi them chi tiet hoa don");
 	e.printStackTrace();

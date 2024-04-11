@@ -90,7 +90,7 @@
 									<div class="input-group quantity mt-4" style="width: 100px;">
 
 										<div class="input-group-btn">
-											<a href="cartMinus?id=${entry.value.idThuoc}&action=minus"
+											<a  href="cartMinus?id=${entry.value.idThuoc}&action=minus"
 												class="btn btn-sm btn-minus rounded-circle bg-light border">
 												<i class="fa fa-minus"></i>
 											</a>
@@ -111,13 +111,7 @@
 										var="sum"
 										value="${sum+(entry.value.gia * entry.value.quantity)}" /></td>
 								<td>
-									<form action="removeFromCart?action=remove" method="">
-										<input type="hidden" name="id" value="${entry.value.idThuoc}">
-										<button type="submit"
-											class="btn btn-md rounded-circle bg-light border mt-4">
-											<i class="fa fa-times text-danger"></i>
-										</button>
-									</form>
+									
 
 								</td>
 
@@ -132,7 +126,7 @@
 					placeholder="Coupon Code">
 				<button
 					class="btn border-secondary rounded-pill px-4 py-3 text-primary"
-					type="button">Apply Coupon</button>
+					type="button" >Apply Coupon</button>
 			</div>
 			<div class="row g-4 justify-content-end">
 				<div class="col-8"></div>
@@ -154,7 +148,7 @@
 							</div>
 							<a
 								class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-							  href="checkout">Proceed Checkout</a>
+							  href="checkout" >Proceed Checkout</a>
 						</div>
 					</div>
 				</div>
@@ -163,6 +157,7 @@
 		<!-- Cart Page End -->
 		<%@ include file="/common/web/footer.jsp"%>
 </body>
+
 <script>
 	
 </script>

@@ -55,7 +55,7 @@
 							</div>
 							<div class="form-row">
 								<div class="form-holder w-100">
-									<button type=submit >Order</button>
+									<button type=submit onclick="showConfirmation()" >Order</button>
 								</div>
 							</div>
 						</div>
@@ -70,4 +70,9 @@
 
 
 </body>
+<script>
+    function showConfirmation() {
+        alert("Payment successful. Thank you for your purchase!");
+    }
+</script>
 </html>
