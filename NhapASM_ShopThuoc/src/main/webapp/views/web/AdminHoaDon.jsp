@@ -263,9 +263,9 @@
 										<td>${item.IDHoaDon}</td>
 										<td>${item.IDKhachHang}</td>
 										<td>${item.IDMaNV}</td>
-										<td>${item.NgayDH}</td>
-										<td>${item.Email}</td>
-										<td>${item.TenKhachHang}</td>
+										<%-- <td>${item.NgayDH}</td>
+										<td>${item.Email}</td> --%>
+									
 										<td>${item.DiaChiKhachHang}</td>
 										<td>${item.SoDienThoaiKhachHang}</td>
 										
