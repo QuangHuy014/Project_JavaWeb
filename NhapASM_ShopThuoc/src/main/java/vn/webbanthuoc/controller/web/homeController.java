@@ -19,7 +19,7 @@ import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
 
 
-@WebServlet({"/homeController", "/product-Detail", "/client/addToCart"})
+@WebServlet({"/homeController","/product-Detail", "/client/addToCart"})
 public class homeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private ThuocDao thuocDao = new ThuocDao();

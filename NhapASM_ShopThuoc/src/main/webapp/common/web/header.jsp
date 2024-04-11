@@ -10,7 +10,7 @@
 
 
 <!-- Navbar start -->
-<div class="container-fluid fixed-top bg-primary"
+ <div class="container-fluid fixed-top bg-primary"
 	style="top: 0px; padding-top: 30px;" style="background-color: #2167dd;">
 	<div class="container px-0" style="background-color: #2167dd;">
 		<nav class="navbar navbar-light  navbar-expand-xl"
@@ -51,17 +51,20 @@
 					<a href="#" class="position-relative me-4 my-auto"> <i
 						class="fa fa-shopping-bag fa-2x" style=""></i> <span
 						class="position-absolute bg-primary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-						style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						style="top: -5px; left: 15px; height: 20px; min-width: 20px;" >${countCellPhones}</span>
 					</a> <a
 						href="../fruitables-1.0.0/login-form-20/login-form-20/index.html"
 						class="my-auto"> <i class="fas fa-user fa-2x"></i>
 					</a>
-					<c:if test="${not empty sessionScope.user}">
-						<a class="nav-link nav-link-1 " data-toggle="modal"
-							data-target="#changePassModel">Welcome,
-							${sessionScope.user.id }</a>
-
-					</c:if>
+					 <c:if test="${not empty sessionScope.KhachHang}">
+                        <a class="nav-link nav-link-1 " data-toggle="modal"
+                            data-target="#changePassModel">${sessionScope.KhachHang.ten}</a>
+                    </c:if>
+                    <c:if test="${not empty sessionScope.NhanVien}">
+                        <a class="nav-link nav-link-1 " data-toggle="modal"
+                            data-target="#changePassModel">${sessionScope.NhanVien.ten}</a>
+                    </c:if>
+                    <a href="logout" class="nav-item nav-link text-primary">Logout</a>
 				</div>
 			</div>
 		</nav>

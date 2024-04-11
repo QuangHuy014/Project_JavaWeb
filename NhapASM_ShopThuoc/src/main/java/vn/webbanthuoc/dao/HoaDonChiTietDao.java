@@ -9,20 +9,18 @@ import vn.webbanthuoc.util.JpaUtil;
 public class HoaDonChiTietDao {
 
     public void save(hoaDonChiTiet hoaDonChiTiet) {
-        EntityManager em = JpaUtil.getEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            em.persist(hoaDonChiTiet);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction.isActive()) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            em.close();
-        }
+    	   EntityManager em = JpaUtil.getEntityManager();
+           try {
+               em.getTransaction().begin();
+               em.persist(hoaDonChiTiet);
+               em.getTransaction().commit();
+           } catch (Exception e) {
+               e.printStackTrace();
+               em.getTransaction().rollback();
+               throw e;
+           } finally {
+               em.close();
+           }
     }
 
     public hoaDonChiTiet findById(int id) {

@@ -64,7 +64,7 @@ public class adminHoaDon extends HttpServlet {
 		if (request.getMethod().equalsIgnoreCase("get")) {
 			HoaDonDao hoadon = new HoaDonDao();
 			List<hoaDon> ListSp1 = hoadon.findAll();
-			request.setAttribute("ListSP", ListSp1);
+			request.setAttribute("ListHoaDon", ListSp1);
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/AdminHoaDon.jsp");
 			rd.forward(request, response);
 		}
