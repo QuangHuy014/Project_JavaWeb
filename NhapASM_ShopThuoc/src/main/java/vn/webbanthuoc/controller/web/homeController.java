@@ -15,15 +15,10 @@ import javax.servlet.http.HttpSession;
 import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
 
-<<<<<<< HEAD
+
 
 @WebServlet({"/homeController","/product-Detail", "/client/addToCart"})
-=======
-/**
- * Servlet implementation class homeController
- */
-@WebServlet({"/homeController","/product-Detail","/client/addToCart"})
->>>>>>> d0faacabc2b00da51b9106912b8257191c1744d3
+
 public class homeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     ThuocDao thuocDao = new ThuocDao();
