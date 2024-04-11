@@ -246,10 +246,10 @@ public class homeController extends HttpServlet {
             session.setAttribute("cartThuocss", cartThuoc);
 
             // Chuyển hướng đến trang giỏ hàng
-            response.sendRedirect(request.getContextPath() + "/PhoneList1");
+           
             response.sendRedirect(request.getContextPath() + "/addToCart1");
-            response.sendRedirect(request.getContextPath() + "/cartPlus");
-            response.sendRedirect(request.getContextPath() + "/cartMinus");
+           
+     
             
 
 

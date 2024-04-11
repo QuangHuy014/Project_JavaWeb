@@ -291,7 +291,7 @@
 										phẩm không tồn tại</a>
 								</c:if>
 								<!-- Nếu user tồn tại, hiển thị nút thêm vào giỏ hàng -->
-								<c:if test="${not empty user}">
+								<%-- <c:if test="${not empty user}">
 									<a
 										href="/NhapASM_ShopThuoc/addToCart?id=${user.idThuoc}"
 										class="btn border border-info rounded-pill px-1 text-info me-3"
@@ -300,7 +300,16 @@
 									</a>
 
 
+								</c:if> --%>
+								<c:if test="${not empty user}">
+									<a href="/NhapASM_ShopThuoc/addToCart?id=${user.idThuoc}"
+										class="btn border border-info rounded-pill px-1 text-info me-3"
+										style="font-size: 15px; display: block; margin: 0 auto;">
+										<i class="fa fa-shopping-bag text-info"></i> Thêm giỏ thuốc
+									</a>
+
 								</c:if>
+
 							</div>
 						</div>
 					</div>

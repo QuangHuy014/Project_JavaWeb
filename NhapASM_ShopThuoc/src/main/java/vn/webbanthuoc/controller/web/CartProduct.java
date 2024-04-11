@@ -28,7 +28,8 @@ public class CartProduct extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ThuocDao thuocDao = new ThuocDao();
 			String idThuoc = req.getParameter("id");
-			System.out.println("thuocId: " + idThuoc);
+//			System.out.println("thuocId: " + idThuoc);
+			if (idThuoc != null && !idThuoc.isEmpty()) {
 			
 			String action=req.getParameter("action");
 			if (action != null && action.equals("minus")) {
@@ -69,6 +70,9 @@ public class CartProduct extends HttpServlet {
 			removeProductFromCart(idThuoc);
 		}
 	}
+	}
+	
+
 	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        String productId = request.getParameter("id");
 	        // Xử lý logic xóa sản phẩm ở đây, sau đó cập nhật giỏ hàng
