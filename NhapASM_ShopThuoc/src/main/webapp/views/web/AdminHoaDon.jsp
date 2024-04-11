@@ -36,7 +36,7 @@
 
 		<form
 			class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0"
-			action="/NhapASM_ShopThuoc/showProduct" method="get" role="form">
+			action="/NhapASM_ShopThuoc/hoaDonList" method="get" role="form">
 			<input class="form-control" name="fullname" type="text"
 				placeholder="Search" aria-label="Search">
 		</form>
@@ -258,7 +258,10 @@
 									</thead>
 
 									<tbody>
-										<c:forEach items="${ListSP}" var="item">
+										<c:forEach items="${hoaDonList}" var="item">
+										<tr>
+										<td>item.IDHoaDon</td>
+										</tr>
 										<%-- 	<tr>
 												<td>${item.idThuoc}</td>
 												<td>${item.ten}</td>
