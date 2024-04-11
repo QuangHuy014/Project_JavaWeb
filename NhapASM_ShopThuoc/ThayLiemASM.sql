@@ -55,7 +55,7 @@ CREATE TABLE [Thuoc] (
 );
 
 CREATE TABLE [HoaDon] (
-  [IDHoaDon] int PRIMARY KEY NOT NULL,
+  [IDHoaDon] int PRIMARY KEY ,
   [IDKhachHang] int NOT NULL,
   [IDMaNV] int NOT NULL,
   [NgayDH] DATE NOT NULL,
@@ -124,3 +124,21 @@ VALUES
 ('t7', N'Siro Healthy New Kids bổ sung vitamin,', 'nt4', 1, 120000, NULL, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/300x300/filters:quality(90)/https://cms-prod.s3-sgn09.fptcloud.com/00345454_siro_an_ngon_healthy_new_kid_8980_5f62_large_f0c20d905d.jpg', N'Nguồn gốc 4', N'lysine, taurin, hỗ trợ kích thích tiêu hóa (120ml)', '2024-04-03', 1, N'Bảo quản 4', N'Hộp lớn'),
 ('t8', N'Viên uống Hair Volume New Nordic giúp tóc chắc khỏe', 'nt4', 1, 130000, NULL, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/300x300/https://cms-prod.s3-sgn09.fptcloud.com/00345353_hair_volume_vien_uong_duong_toc_7952_62af_large_46a5a99e57.jpg', N'Nguồn gốc 4', N'đẹp tóc, hạn chế rụng tóc (30 viên)', '2024-04-03', 1, N'Bảo quản 4', N'Hộp lớn'),
 ('t9', N'Viên uống BIO Hair, Nail & Skin Royal Care hỗ trợ cải thiện sạm da,', 'nt4', 1, 100000, NULL, 1, 'https://cdn.nhathuoclongchau.com.vn/unsafe/300x300/https://cms-prod.s3-sgn09.fptcloud.com/1_a2daaedb7c.jpg', N'Nguồn gốc 4', N'khô da, giúp móng tóc chắc khỏe (30 viên)', '2024-04-03', 1, N'Bảo quản 4', N'Hộp lớn')
+
+-- Chèn dữ liệu cho bảng HoaDon
+INSERT INTO HoaDon (IDHoaDon, IDKhachHang, IDMaNV, NgayDH, Email, TenKhachHang, DiaChiKhachHang, SoDienThoaiKhachHang)
+VALUES
+(1, 1, 1, '2024-04-10', 'example1@example.com', 'Khách hàng 1', 'Địa chỉ khách hàng 1', '123456789'),
+(2, 2, 2, '2024-04-10', 'example2@example.com', 'Khách hàng 2', 'Địa chỉ khách hàng 2', '987654321'),
+(3, 3, 3, '2024-04-11', 'example3@example.com', 'Khách hàng 3', 'Địa chỉ khách hàng 3', '111222333'),
+(4, 1, 1, '2024-04-11', 'example1@example.com', 'Khách hàng 1', 'Địa chỉ khách hàng 1', '123456789'),
+(5, 2, 2, '2024-04-12', 'example2@example.com', 'Khách hàng 2', 'Địa chỉ khách hàng 2', '987654321');
+
+-- Chèn dữ liệu cho bảng HoaDonChiTiet
+INSERT INTO HoaDonChiTiet (IDHoaDonChiTiet, IDHoaDon, TenThuoc, IDThuoc, SoLuong, Gia, DonVi)
+VALUES
+(1, 1, 'Thuốc A', 't1', 2, 10000, 'Viên'),
+(2, 1, 'Thuốc B', 't2', 1, 20000, 'Viên'),
+(3, 2, 'Thuốc C', 't3', 3, 15000, 'Viên'),
+(4, 3, 'Thuốc D', 't4', 1, 30000, 'Viên'),
+(5, 4, 'Thuốc E', 't5', 2, 25000, 'Viên');

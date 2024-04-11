@@ -19,7 +19,7 @@ import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
 
 
-@WebServlet({"/homeController","/product-Detail", "/client/addToCart"})
+@WebServlet({"/homeController","/product-Detail"})
 public class homeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private ThuocDao thuocDao = new ThuocDao();
@@ -39,9 +39,7 @@ public class homeController extends HttpServlet {
                     RequestDispatcher rd = request.getRequestDispatcher("/views/web/sanpham.jsp");
                     rd.forward(request, response);
                     break;
-                case "/client/addToCart":
-                    addToCart(request, response);
-                    break;
+           
                 default:
                     throw new IllegalArgumentException("Unexpected value: " + action);
             }
@@ -62,38 +60,38 @@ public class homeController extends HttpServlet {
         }
     }
 
-    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        // Kiểm tra xem người dùng đã đăng nhập chưa
-        if (session.getAttribute("KhachHangID") != null || session.getAttribute("NhanVienID") != null) {
-            String productId = request.getParameter("id");
-            if (productId != null && !productId.isEmpty()) {
-                Thuoc product = thuocDao.findById(productId);
-                if (product != null) {
-                    // Lấy hoặc tạo giỏ hàng của người dùng từ session
-                    List<Thuoc> cart = (List<Thuoc>) session.getAttribute("cart");
-                    if (cart == null) {
-                        cart = new ArrayList<>();
-                    }
-                    // Thêm sản phẩm vào giỏ hàng
-                    cart.add(product);
-                    // Lưu lại giỏ hàng vào session
-                    session.setAttribute("cart", cart);
-                    // Chuyển hướng đến trang hiển thị giỏ hàng
-                    response.sendRedirect(request.getContextPath() + "/cartPhoneView1");
-                    return;
-                }
-            }
-        } else {
-            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập và lưu lại URL hiện tại
-            String currentURL = request.getRequestURI();
-            session.setAttribute("redirectURL", currentURL);
-            response.sendRedirect(request.getContextPath() + "/views/web/tranglogin.jsp");
-            return;
-        }
-        // Nếu không có sản phẩm, chuyển hướng về trang chủ
-        response.sendRedirect(request.getContextPath() + "/homeController");
-    }
+//    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        HttpSession session = request.getSession();
+//        // Kiểm tra xem người dùng đã đăng nhập chưa
+//        if (session.getAttribute("KhachHangID") != null || session.getAttribute("NhanVienID") != null) {
+//            String productId = request.getParameter("id");
+//            if (productId != null && !productId.isEmpty()) {
+//                Thuoc product = thuocDao.findById(productId);
+//                if (product != null) {
+//                    // Lấy hoặc tạo giỏ hàng của người dùng từ session
+//                    List<Thuoc> cart = (List<Thuoc>) session.getAttribute("cart");
+//                    if (cart == null) {
+//                        cart = new ArrayList<>();
+//                    }
+//                    // Thêm sản phẩm vào giỏ hàng
+//                    cart.add(product);
+//                    // Lưu lại giỏ hàng vào session
+//                    session.setAttribute("cart", cart);
+//                    // Chuyển hướng đến trang hiển thị giỏ hàng
+//                    response.sendRedirect(request.getContextPath() + "/cartPhoneView1");
+//                    return;
+//                }
+//            }
+//        } else {
+//            // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập và lưu lại URL hiện tại
+//            String currentURL = request.getRequestURI();
+//            session.setAttribute("redirectURL", currentURL);
+//            response.sendRedirect(request.getContextPath() + "/views/web/tranglogin.jsp");
+//            return;
+//        }
+//        // Nếu không có sản phẩm, chuyển hướng về trang chủ
+//        response.sendRedirect(request.getContextPath() + "/homeController");
+//    }
 
 }
 

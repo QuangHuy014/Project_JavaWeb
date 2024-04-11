@@ -1,5 +1,6 @@
 package vn.webbanthuoc.dao;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -19,6 +20,8 @@ public class HoaDonDao {
         em.close();
         super.finalize();
     }
+   
+    
     public List<hoaDon> findAllHoaDon() {
 		EntityManager em = JpaUtil.getEntityManager();
 		String jpql = "SELECT s FROM hoaDon s order by s.IDHoaDon";
