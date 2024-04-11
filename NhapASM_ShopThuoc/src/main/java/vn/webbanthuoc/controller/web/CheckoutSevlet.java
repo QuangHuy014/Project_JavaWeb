@@ -75,8 +75,8 @@ try {
 	 hoaDon hoaDon = new hoaDon();
 		int idnv= (int) request.getSession().getAttribute("NhanVienID");
 
-      hoaDon.setIDMaNV(idnv);
-      hoaDon.setIDKhachHang(5);
+      hoaDon.setIDMaNV(1);
+      hoaDon.setIDKhachHang(idnv);
       hoaDon.setIDHoaDon(14);
       hoaDon.setTenKhachHang(tenKhachHang);
       hoaDon.setDiaChiKhachHang(diaChi);
