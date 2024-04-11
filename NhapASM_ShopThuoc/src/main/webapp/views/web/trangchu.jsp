@@ -201,40 +201,16 @@
 
 			<div class="row g-4 justify-content-center">
 				<c:forEach var="user" items="${ListSP}">
-					<div class=" col-md-6 col-6 col-xl-2 rounded-bottom ">
+					<div class=" col-md-6 col-6 col-xl-2 rounded-bottom">
 						<div
 							class="rounded position-relative fruite-item border border-primary-subtle rounded-bottom"
 							style="background-color: #FFFFFF;">
 							<div class="fruite-img">
-								<%-- <a
-									href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
-									src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a> --%>
-								<%-- <a
-									href="/BanNhapASMThuoc/sanPhamChiTietController?id=${user.idThuoc}">
+								<a
+									href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}">
 									<img src="${user.hinh}" class="img-fluid w-100 rounded-top"
 									alt="">
-								</a> --%>
-
-								<c:if
-									test="${fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
-									<a
-										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
-										src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a>
-
-								</c:if>
-
-								<!-- Nếu không, hiển thị hình ảnh từ đường dẫn cố định -->
-								<c:if
-									test="${not fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
-
-									<a
-										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
-										src="<c:url value='/template/web/img/${user.hinh}' />"
-										class="img-fluid w-100 rounded-top" alt=""></a>
-
-
-								</c:if>
-
+								</a>
 							</div>
 
 							<div
@@ -245,32 +221,50 @@
 								<h6 class="text-truncate">${user.congDung}</h6>
 								<div
 									class="d-flex justify-content-between flex-lg-wrap align-items-center">
-
 									<div class=" justify-content-between flex-lg-wrap ">
-										<label class=""
-											style="font-size: 15px; font-weight: bold; color: #3153DC;">${user.gia}đ/Hộp</label>
-										<p class="text-decoration-line-through  "
+										<label class="text-info"
+											style="font-size: 15px; font-weight: bold;">${user.gia}đ/Hộp</label>
+										<p class="text-decoration-line-through"
 											style="font-size: 13px; color: black;">2.235.000đ /Hộp</p>
-										<p class=" rounded-pill px-4"
-											style="font-size: 13px; color: black; background-color: #EDF0F3;">
-											Hộp lớn</p>
+										<p class="rounded-pill px-4"
+											style="font-size: 13px; color: black; background-color: #EDF0F3;">Hộp
+											lớn</p>
 									</div>
-
-
 								</div>
 
-								<a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}&action=addToCart1"
-									class="btn border border-info rounded-pill px-1 text-info me-3"
-									style="font-size: 15px; display: block; margin: 0 auto;"><i
-									class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
+								<!-- Thêm kiểm tra nếu user không tồn tại -->
+								<c:if test="${empty user}">
+									<a href="#"
+										class="btn border border-info rounded-pill px-1 text-info me-3"
+										style="font-size: 15px; display: block; margin: 0 auto;">Sản
+										phẩm không tồn tại</a>
+								</c:if>
+								<!-- Nếu user tồn tại, hiển thị nút thêm vào giỏ hàng -->
+								<%-- <c:if test="${not empty user}">
+									<a
+										href="/NhapASM_ShopThuoc/addToCart?id=${user.idThuoc}"
+										class="btn border border-info rounded-pill px-1 text-info me-3"
+										style="font-size: 15px; display: block; margin: 0 auto;">
+										<i class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc
+									</a>
 
 
+								</c:if> --%>
+								<c:if test="${not empty user}">
+									<a href="/NhapASM_ShopThuoc/addToCart?id=${user.idThuoc}"
+										class="btn border border-info rounded-pill px-1 text-info me-3"
+										style="font-size: 15px; display: block; margin: 0 auto;">
+										<i class="fa fa-shopping-bag text-info"></i> Thêm giỏ thuốc
+									</a>
+
+								</c:if>
 
 							</div>
 						</div>
-
 					</div>
 				</c:forEach>
+
+
 
 
 			</div>
