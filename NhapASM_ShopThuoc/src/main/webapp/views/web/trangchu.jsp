@@ -237,7 +237,7 @@
 
 								</div>
 
-								<a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}"
+								<a href="/NhapASM_ShopThuoc/addToCart1?id=${user.idThuoc}&action=addToCart1"
 									class="btn border border-info rounded-pill px-1 text-info me-3"
 									style="font-size: 15px; display: block; margin: 0 auto;"><i
 									class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
