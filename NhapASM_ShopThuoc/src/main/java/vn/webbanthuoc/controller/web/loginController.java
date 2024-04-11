@@ -92,6 +92,9 @@ public class loginController extends HttpServlet {
 //        }
 //        request.getRequestDispatcher("/views/web/tranglogin.jsp").forward(request, response);
 //    }
+    
+    
+    
     private void Login(HttpServletRequest request, HttpServletResponse response)
             throws IllegalAccessException, InvocationTargetException, ServletException, IOException {
         KhachHangDao khDao = new KhachHangDao();

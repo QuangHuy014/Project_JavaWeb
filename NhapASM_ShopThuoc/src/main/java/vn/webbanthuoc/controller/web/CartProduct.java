@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
@@ -60,9 +61,9 @@ public class CartProduct extends HttpServlet {
 		req.setAttribute("countCellPhones", cartThuoc.size());
 		req.setAttribute("cartProductsList", thuocDao.findAll());
 		if(req.getRequestURI().contains("PhoneList1") || req.getRequestURI().contains("addToCart1"))
-			req.getRequestDispatcher("/client/addToCart").forward(req, resp);
+			req.getRequestDispatcher("/addToCart").forward(req, resp);
 		else
-			req.getRequestDispatcher("/client/addToCart").forward(req, resp);
+			req.getRequestDispatcher("/addToCart").forward(req, resp);
 		   String uric=req.getRequestURI();
 		if(uric.equals("removeFromCart")) {
 			removeProductFromCart(idThuoc);
@@ -85,4 +86,58 @@ public class CartProduct extends HttpServlet {
 	            }
 	        }
 	   }
+	   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		    String productId = request.getParameter("id");
+
+		    // Kiểm tra xem productId có tồn tại không
+		    if (productId != null && !productId.isEmpty()) {
+		        try {
+		            ThuocDao thuocDao = new ThuocDao();
+		            // Gọi phương thức findById của ThuocDao để tìm Thuoc theo id
+		            Thuoc product = thuocDao.findById(productId);
+
+		            // Kiểm tra xem product có tồn tại không
+		            if (product != null) {
+		                HttpSession session = request.getSession();
+		                Map<String, Thuoc> cartThuocss = (Map<String, Thuoc>) session.getAttribute("cartThuocss");
+		                if (cartThuocss == null) {
+		                    cartThuocss = new HashMap<>();
+		                }
+
+		                // Thêm sản phẩm vào giỏ hàng
+		                if (cartThuocss.containsKey(productId)) {
+		                    // Nếu sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng
+		                    Thuoc existingProduct = cartThuocss.get(productId);
+		                    existingProduct.setQuantity(existingProduct.getQuantity() + 1);
+		                } else {
+		                    // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm mới
+		                    product.setQuantity(1);
+		                    cartThuocss.put(productId, product);
+		                }
+
+		                // Lưu lại giỏ hàng vào session
+		                session.setAttribute("cartThuocss", cartThuocss);
+		                
+		                // Chuyển hướng đến trang giỏ hàng
+		                response.sendRedirect(request.getContextPath() + "/CartProduct");
+		                return;
+		            } else {
+		                // Nếu không tìm thấy sản phẩm, có thể chuyển hướng đến trang lỗi hoặc trang chính
+		                response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
+		                return;
+		            }
+		        } catch (NumberFormatException e) {
+		            // Xử lý khi id không đúng định dạng số
+		            response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
+		            return;
+		        }
+		    } else {
+		        // Nếu không có id được truyền đến
+		        response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
+		        return;
+		    }
+		}
+
+
+
 }
