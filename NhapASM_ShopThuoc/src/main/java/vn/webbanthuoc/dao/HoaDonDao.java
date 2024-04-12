@@ -1,5 +1,6 @@
 package vn.webbanthuoc.dao;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -7,18 +8,28 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import vn.webbanthuoc.entity.Thuoc;
 import vn.webbanthuoc.entity.hoaDon;
 import vn.webbanthuoc.util.JpaUtil;
 
 public class HoaDonDao {
-    
+	
     @Override
     protected void finalize() throws Throwable {
         EntityManager em = JpaUtil.getEntityManager();
         em.close();
         super.finalize();
     }
-
+   
+    
+    public List<hoaDon> findAllHoaDon() {
+		EntityManager em = JpaUtil.getEntityManager();
+		String jpql = "SELECT s FROM hoaDon s order by s.IDHoaDon";
+		TypedQuery<hoaDon> query = em.createQuery(jpql, hoaDon.class);
+		return query.getResultList();
+	}
+    
+    
     public void create(hoaDon hoaDon) {
         EntityManager em = JpaUtil.getEntityManager();
         try {
@@ -77,7 +88,7 @@ public class HoaDonDao {
 
     public List<hoaDon> findAll() {
         EntityManager em = JpaUtil.getEntityManager();
-        TypedQuery<hoaDon> query = em.createNamedQuery("hoaDon.findAll", hoaDon.class);
+        TypedQuery<hoaDon> query = em.createQuery("SELECT hd FROM hoaDon hd", hoaDon.class);
         return query.getResultList();
     }
 

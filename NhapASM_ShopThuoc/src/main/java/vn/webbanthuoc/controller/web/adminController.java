@@ -66,10 +66,9 @@ public class adminController extends HttpServlet {
 		String idThuoc = request.getParameter("id");
 		if (idThuoc != null) {
 			thuocDao.delete(idThuoc);
-			 List<Thuoc> ListSP = thuocDao.findAll();
-             request.setAttribute("ListSP", ListSP);
-             request.setAttribute("notice", "Delete success " + ListSP);
-             request.getRequestDispatcher("/showProduct").forward(request, response);
+			 List<Thuoc> Listhd = thuocDao.findAll();
+             request.setAttribute("ListSP", Listhd);
+             request.setAttribute("notice", "Delete success " + Listhd);
 
 		}
 

@@ -36,7 +36,7 @@
 
 		<form
 			class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0"
-			action="/NhapASM_ShopThuoc/showProduct" method="get" role="form">
+			action="/NhapASM_ShopThuoc/hoaDonList" method="get" role="form">
 			<input class="form-control" name="fullname" type="text"
 				placeholder="Search" aria-label="Search">
 		</form>
@@ -201,8 +201,8 @@
 				class="col-md-3 col-lg-3 d-md-block sidebar collapse">
 				<div class="position-sticky py-4 px-3 sidebar-sticky">
 					<ul class="nav flex-column h-100">
-						<li class="nav-item"><a class="nav-link" aria-current=""
-							href="/showHoaDon"> <i class="bi-house-fill me-2"></i> List
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="index.html"> <i class="bi-house-fill me-2"></i> List
 								Bill
 						</a></li>
 
@@ -243,23 +243,35 @@
 					<div class="col-lg-12 col-12">
 						<div class="custom-block bg-white">
 
-							<div class="table-responsive">s
+							<div class="table-responsive">
 								<table class="account-table table">
-									<thead>
 										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">Name Product</th>
-											<th scope="col">Image</th>
-											<th scope="col">Prices</th>
-											<th scope="col">DateProduct</th>
-											<th scope="col">Effective</th>
-											<th scope="col">Active</th>
+											<th scope="col">ID Hóa Đơn</th>
+											<th scope="col">ID Khách Hàng</th>
+											<th scope="col">ID MaNV</th>
+											<th scope="col">NgayDH</th>
+											<th scope="col">Email</th>
+											<th scope="col">Tên Khách Hàng</th>
+											<th scope="col">Địa Chỉ Khách Hàng</th>
+										<th scope="col">Số Điện Thoại Khách Hàng</th>
 										</tr>
 									</thead>
 
 									<tbody>
-										<c:forEach items="${ListSP}" var="item">
-											<tr>
+										<c:forEach items="${ListHoaDonn}" var="item">
+										<tr>
+										<td>${item.IDHoaDon}</td>
+										<td>${item.IDKhachHang}</td>
+										<td>${item.IDMaNV}</td>
+										<td>${item.ngayDH}</td>
+										<td>${item.email}</td>
+									
+										<td>${item.diaChiKhachHang}</td>
+										<td>${item.soDienThoaiKhachHang}</td>
+										
+										
+										</tr>
+										<%-- 	<tr>
 												<td>${item.idThuoc}</td>
 												<td>${item.ten}</td>
 
@@ -282,8 +294,8 @@
 												<td>${item.congDung}</td>
 												<td><a
 													href="/NhapASM_ShopThuoc/deleteProduct?id=${item.idThuoc}">Delete</a></td>
-											</tr>
-										</c:forEach>
+											</tr>--%>
+										</c:forEach> 
 
 
 

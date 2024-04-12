@@ -147,10 +147,12 @@ import javax.servlet.http.HttpSession;
 import vn.webbanthuoc.dao.ThuocDao;
 import vn.webbanthuoc.entity.Thuoc;
 
+
 @WebServlet({"/homeController","/product-Detail","/addToCart"})
 public class homeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     ThuocDao thuocDao = new ThuocDao();
+
 
     public homeController() {
         super();
@@ -171,7 +173,6 @@ public class homeController extends HttpServlet {
                     rd.forward(request, response);
                     break;
                 }
-
                 case "/addToCart": {
                     HttpSession session = request.getSession(false);
                     if (session != null && session.getAttribute("KhachHangID") != null) {
@@ -189,17 +190,31 @@ public class homeController extends HttpServlet {
                     }
                     break;
                 }
+
                 default:
                     throw new IllegalArgumentException("Unexpected value: " + action);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // Xử lý ngoại lệ
         }
     }
 
     // Trong phương thức HomeController
     private void HomeController(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Kiểm tra xem người dùng đã đăng nhập chưa
+
+    	if(request.getMethod().equalsIgnoreCase("get")) {
+		List<Thuoc>ListSp1=thuocDao.Filter6Product();
+		request.setAttribute("ListSP",ListSp1);
+		List<Thuoc>ListSp2=thuocDao.Fillter4Productlike1();
+		request.setAttribute("ListSP2", ListSp2);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/views/web/trangchu.jsp");
+		rd.forward(request, response);
+	}
+    }
+
+
+    private void addToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("KhachHangID") != null) {
             // Nếu có session của KhachHang, chứng tỏ đã đăng nhập
@@ -260,3 +275,4 @@ public class homeController extends HttpServlet {
     }
 
 }
+

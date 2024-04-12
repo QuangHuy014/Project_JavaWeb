@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 public class CartSellProduct extends HttpServlet{
 @Override
 protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	String uri = req.getRequestURI();
-	if (uri.contains("cartPhoneView")) {
-		req.getRequestDispatcher("/views/web/cart.jsp").forward(req, resp);
-	}
-	else if (uri.contains("checkOut")){
-		req.getRequestDispatcher("/views/phone/checkOut.jsp").forward(req, resp);
-	}
+//	String uri = req.getRequestURI();
+//	if (uri.contains("cartPhoneView")) {
+//		req.getRequestDispatcher("/views/web/cart.jsp").forward(req, resp);
+//	}
+//	else if (uri.contains("checkOut")){
+//		req.getRequestDispatcher("/views/phone/checkOut.jsp").forward(req, resp);
+//	}
 }
 }

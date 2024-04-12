@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -198,59 +200,6 @@
 
 
 			<div class="row g-4 justify-content-center">
-				<%-- <c:forEach var="user" items="${ListSP}">
-					<div class=" col-md-6 col-6 col-xl-2 rounded-bottom ">
-						<div
-							class="rounded position-relative fruite-item border border-primary-subtle rounded-bottom"
-							style="background-color: #FFFFFF;">
-							<div class="fruite-img">
-								<a
-									href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
-									src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a>
-								<a
-									href="/BanNhapASMThuoc/sanPhamChiTietController?id=${user.idThuoc}">
-									<img src="${user.hinh}" class="img-fluid w-100 rounded-top"
-									alt="">
-								</a>
-
-							</div>
-
-							<div
-								class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
-								style="top: 0px; left: 0px;">-20%</div>
-							<div class="p-2 ms-3">
-								<h6 style="font-weight: bold;">${user.ten}</h6>
-								<h6 class="text-truncate">${user.congDung}</h6>
-								<div
-									class="d-flex justify-content-between flex-lg-wrap align-items-center">
-
-									<div class=" justify-content-between flex-lg-wrap ">
-										<label class=""
-											style="font-size: 15px; font-weight: bold; color: #3153DC;">${user.gia}đ/Hộp</label>
-										<p class="text-decoration-line-through  "
-											style="font-size: 13px; color: black;">2.235.000đ /Hộp</p>
-										<p class=" rounded-pill px-4"
-											style="font-size: 13px; color: black; background-color: #EDF0F3;">
-											Hộp lớn</p>
-									</div>
-
-
-								</div>
-
-								<a
-									href="${pageContext.request.contextPath}/addToCart?id=${user.idThuoc}"
-									class="btn border border-info rounded-pill px-1 text-info me-3"
-									style="font-size: 15px; display: block; margin: 0 auto;"><i
-									class="fa fa-shopping-bag  text-info"></i> Thêm giỏ thuốc</a>
-
-
-
-
-							</div>
-						</div>
-
-					</div>
-				</c:forEach> --%>
 				<c:forEach var="user" items="${ListSP}">
 					<div class=" col-md-6 col-6 col-xl-2 rounded-bottom">
 						<div
@@ -386,7 +335,26 @@
 									<div
 										class="text-white bg-danger px-3 py-1 rounded-end position-absolute"
 										style="top: 0px; left: 0px;">-20%</div>
-									<img src="${user.hinh}" alt="">
+									<c:if
+									test="${fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+									<a
+										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+										src="${user.hinh}" class="img-fluid w-100 rounded-top" alt=""></a>
+
+								</c:if>
+
+								<!-- Nếu không, hiển thị hình ảnh từ đường dẫn cố định -->
+								<c:if
+									test="${not fn:startsWith(user.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
+
+									<a
+										href="/NhapASM_ShopThuoc/sanPhamChiTietController?id=${user.idThuoc}"><img
+										src="<c:url value='/template/web/img/${user.hinh}' />"
+										class="img-fluid w-100 rounded-top" alt=""></a>
+
+
+								</c:if>
+									
 									<div class="card-body">
 										<div class="slider-product-one-content-item-text">
 											<li><img

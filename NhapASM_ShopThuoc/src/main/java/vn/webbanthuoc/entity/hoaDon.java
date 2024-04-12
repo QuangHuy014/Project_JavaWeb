@@ -3,101 +3,121 @@ package vn.webbanthuoc.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Entity
+@Table(name = "HoaDon")
 public class hoaDon {
-    private int IDHoaDon;
-    private int iDKhachHang;
-    private int IDMaNV;
-    private Date NgayDH;
-    private String Email; // Thêm trường Email của khách hàng
-    private String TenKhachHang; // Thêm trường Tên khách hàng
-    private String DiaChiKhachHang; // Thêm trường Địa chỉ của khách hàng
-    private String SoDienThoaiKhachHang; // Thêm trường Số điện thoại của khách hàng
+	@Id
+	private int IDHoaDon;
+	private int IDKhachHang;
+	private int IDMaNV;
+	@Column(name = "NgayDH", nullable = false)
+	@CreationTimestamp
+	private Date ngayDH;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "IDHoaDonChiTiet", referencedColumnName = "IDHoaDonChiTiet")
-    @JsonIgnoreProperties(value = { "applications", "hibernateLazyInitializer" }) // help history not error because map
-    private hoaDonChiTiet hoaDonChiTiet;
+	@Column(name = "Email", nullable = false)
+	private String email;
+	// Thêm trường Email của khách hàng
 
+	@Column(name = "TenKhachHang", nullable = false)
+	private String tenKhachHang;
+	// Thêm trường Tên khách hàng
 
-	public hoaDon(int IDHoaDon, int iDKhachHang, int IDMaNV, Date NgayDH) {
-        this.IDHoaDon = IDHoaDon;
-        this.iDKhachHang = iDKhachHang;
-        this.IDMaNV = IDMaNV;
-        this.NgayDH = NgayDH;
-    }
+	@Column(name = "DiaChiKhachHang", nullable = false)
+	private String diaChiKhachHang;
+	
+	@Column(name = "SoDienThoaiKhachHang", nullable = false)
+	private String soDienThoaiKhachHang; // Thêm trường Địa chỉ của khách hàng
 
-    public hoaDon() {
-        super();
-    }
+	public hoaDon() {
 
-    // Getters and setters
-    public int getIDHoaDon() {
-        return IDHoaDon;
-    }
+	}
 
-    public void setIDHoaDon(int IDHoaDon) {
-        this.IDHoaDon = IDHoaDon;
-    }
+	public hoaDon(int iDHoaDon, int iDKhachHang, int iDMaNV, Date ngayDH, String email, String tenKhachHang,
+			String diaChiKhachHang, String soDienThoaiKhachHang) {
+		super();
+		IDHoaDon = iDHoaDon;
+		IDKhachHang = iDKhachHang;
+		IDMaNV = iDMaNV;
+		this.ngayDH = ngayDH;
+		this.email = email;
+		this.tenKhachHang = tenKhachHang;
+		this.diaChiKhachHang = diaChiKhachHang;
+		this.soDienThoaiKhachHang = soDienThoaiKhachHang;
+	}
 
-    public int getIDKhachHang() {
-        return iDKhachHang;
-    }
+	public int getIDHoaDon() {
+		return IDHoaDon;
+	}
 
-    public void setIDKhachHang(int iDKhachHang) {
-        this.iDKhachHang = iDKhachHang;
-    }
+	public void setIDHoaDon(int iDHoaDon) {
+		IDHoaDon = iDHoaDon;
+	}
 
-    public int getIDMaNV() {
-        return IDMaNV;
-    }
+	public int getIDKhachHang() {
+		return IDKhachHang;
+	}
 
-    public void setIDMaNV(int IDMaNV) {
-        this.IDMaNV = IDMaNV;
-    }
+	public void setIDKhachHang(int iDKhachHang) {
+		IDKhachHang = iDKhachHang;
+	}
 
-    public Date getNgayDH() {
-        return NgayDH;
-    }
+	public int getIDMaNV() {
+		return IDMaNV;
+	}
 
-    public void setNgayDH(Date NgayDH) {
-        this.NgayDH = NgayDH;
-    }
+	public void setIDMaNV(int iDMaNV) {
+		IDMaNV = iDMaNV;
+	}
 
-    public String getEmail() {
-        return Email;
-    }
+	public Date getNgayDH() {
+		return ngayDH;
+	}
 
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
+	public void setNgayDH(Date ngayDH) {
+		this.ngayDH = ngayDH;
+	}
 
-    public String getTenKhachHang() {
-        return TenKhachHang;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setTenKhachHang(String TenKhachHang) {
-        this.TenKhachHang = TenKhachHang;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getDiaChiKhachHang() {
-        return DiaChiKhachHang;
-    }
+	public String getTenKhachHang() {
+		return tenKhachHang;
+	}
 
-    public void setDiaChiKhachHang(String DiaChiKhachHang) {
-        this.DiaChiKhachHang = DiaChiKhachHang;
-    }
+	public void setTenKhachHang(String tenKhachHang) {
+		this.tenKhachHang = tenKhachHang;
+	}
 
-    public String getSoDienThoaiKhachHang() {
-        return SoDienThoaiKhachHang;
-    }
+	public String getDiaChiKhachHang() {
+		return diaChiKhachHang;
+	}
 
-    public void setSoDienThoaiKhachHang(String SoDienThoaiKhachHang) {
-        this.SoDienThoaiKhachHang = SoDienThoaiKhachHang;
-    }
+	public void setDiaChiKhachHang(String diaChiKhachHang) {
+		this.diaChiKhachHang = diaChiKhachHang;
+	}
+
+	public String getSoDienThoaiKhachHang() {
+		return soDienThoaiKhachHang;
+	}
+
+	public void setSoDienThoaiKhachHang(String soDienThoaiKhachHang) {
+		this.soDienThoaiKhachHang = soDienThoaiKhachHang;
+	}
+
 }

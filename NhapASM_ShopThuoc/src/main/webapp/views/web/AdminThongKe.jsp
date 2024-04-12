@@ -1,21 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <%@include file="/common/taglib.jsp"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="<c:url value='/template/web/admin/css/apexcharts.css'/>" rel="stylesheet">
-    <link href="<c:url value='/template/web/admin/css/bootstrap.min.css'/>" rel="stylesheet">
-    <link href="<c:url value='/template/web/admin/css/bootstrap-icon.css'/>" rel="stylesheet">
-    <link href="<c:url value='/template/web/admin/css/tooplate-mini-finance.css'/>" rel="stylesheet">
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<%@include file="/common/taglib.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap"
+	rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/apexcharts.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link href="<c:url value='/template/web/admin/css/bootstrap-icon.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/template/web/admin/css/tooplate-mini-finance.css'/>"
+	rel="stylesheet">
 </head>
 
 <body>
@@ -201,8 +211,8 @@
 				class="col-md-3 col-lg-3 d-md-block sidebar collapse">
 				<div class="position-sticky py-4 px-3 sidebar-sticky">
 					<ul class="nav flex-column h-100">
-						<li class="nav-item"><a class="nav-link" aria-current=""
-							href="/showHoaDon"> <i class="bi-house-fill me-2"></i> List
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="index.html"> <i class="bi-house-fill me-2"></i> List
 								Bill
 						</a></li>
 
@@ -243,52 +253,42 @@
 					<div class="col-lg-12 col-12">
 						<div class="custom-block bg-white">
 
-							<div class="table-responsive">s
+							<div class="table-responsive">
+								
+
 								<table class="account-table table">
 									<thead>
 										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">Name Product</th>
-											<th scope="col">Image</th>
-											<th scope="col">Prices</th>
-											<th scope="col">DateProduct</th>
-											<th scope="col">Effective</th>
-											<th scope="col">Active</th>
+											<th scope="col">IDHoaDon</th>
+											<th scope="col">IDKhachHang</th>
+											<th scope="col">IDMaNV</th>
+											<th scope="col">NgayDH</th>
+											<th scope="col">Email</th>
+											<th scope="col">TenKhachHang</th>
+											<th scope="col">DiaChiKhachHang</th>
+											<th scope="col">SoDienThoaiKhachHang</th>
 										</tr>
 									</thead>
+									<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 									<tbody>
 										<c:forEach items="${ListSP}" var="item">
 											<tr>
-												<td>${item.idThuoc}</td>
-												<td>${item.ten}</td>
+												<td>${item.IDHoaDon}</td>
+												<td>${item.IDKhachHang}</td>
+												<td>${item.IDMaNV}</td>
+												<td><fmt:formatDate value="${item.ngayDH}"
+														pattern="dd/MM/yyyy" /></td>
 
-												<!-- Kiểm tra nếu item.hinh bắt đầu bằng "https://cdn.nhathuoclongchau.com.vn/unsafe/" -->
-												<c:if
-													test="${fn:startsWith(item.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
-													<td><img src="${item.hinh}" alt="" class="w-50"></td>
-												</c:if>
+												<td>${item.email}</td>
+												<td>${item.tenKhachHang}</td>
+												<td>${item.diaChiKhachHang}</td>
+												<td>${item.soDienThoaiKhachHang}</td> 
 
-												<!-- Nếu không, hiển thị hình ảnh từ đường dẫn cố định -->
-												<c:if
-													test="${not fn:startsWith(item.hinh, 'https://cdn.nhathuoclongchau.com.vn/unsafe/')}">
-													<td><img
-														src="<c:url value='/template/web/img/${item.hinh}' />"
-														alt=""></td>
-												</c:if>
-
-												<td>${item.gia}</td>
-												<td>${item.ngaySanXuat}</td>
-												<td>${item.congDung}</td>
-												<td><a
-													href="/NhapASM_ShopThuoc/deleteProduct?id=${item.idThuoc}">Delete</a></td>
 											</tr>
 										</c:forEach>
-
-
-
-
 									</tbody>
+
 								</table>
 							</div>
 

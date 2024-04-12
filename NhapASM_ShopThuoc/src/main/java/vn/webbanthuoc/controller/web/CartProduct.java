@@ -21,7 +21,7 @@ import vn.webbanthuoc.util.JpaUtil;
 /**
  * Servlet implementation class CartCellPhoneServletSolution1
  */
-@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus"})
+@WebServlet({ "/PhoneList1", "/addToCart1", "/cartPlus","/cartMinus","/removeFromCart"})
 public class CartProduct extends HttpServlet {
 	Map<String, Thuoc> cartThuoc = new HashMap<String, Thuoc>();
 	@Override
@@ -29,6 +29,7 @@ public class CartProduct extends HttpServlet {
 		ThuocDao thuocDao = new ThuocDao();
 			String idThuoc = req.getParameter("id");
 			System.out.println("thuocId: " + idThuoc);
+
 			
 			String action=req.getParameter("action");
 			if (action != null && action.equals("minus")) {
@@ -71,8 +72,13 @@ public class CartProduct extends HttpServlet {
 	}
 	
 
+
 	   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        String productId = request.getParameter("id");
+	        String url=request.getRequestURI();
+//			if(url.equals("removeFromCart")) {
+//				removeProductFromCart(productId);
+//			}
 	        // Xử lý logic xóa sản phẩm ở đây, sau đó cập nhật giỏ hàng
 	        // Ví dụ: cartThuocss.remove(productId);
 	        // Sau đó, chuyển hướng hoặc trả về phản hồi xác nhận thành công
@@ -80,13 +86,10 @@ public class CartProduct extends HttpServlet {
 
 	   private void removeProductFromCart(String idThuoc) {
 	        Thuoc thuoc = cartThuoc.get(idThuoc);
-	        if (thuoc != null) {
-	            if (thuoc.getQuantity() > 1) {
-	                thuoc.setQuantity(thuoc.getQuantity() - 1);
-	            } else {
+	        
 	                cartThuoc.remove(idThuoc);
-	            }
-	        }
+	            
+	        
 	   }
 	   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		    String productId = request.getParameter("id");

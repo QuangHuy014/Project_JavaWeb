@@ -67,7 +67,7 @@ public class loginController extends HttpServlet {
 
                 KhachHang kh = khDao.checkLogin(tenDN, pass);
                 NhanVien nv = nvDao.checkLogin(tenDN, pass);
-
+                	request.getSession().setAttribute("User",nvDao.checkLogin(tenDN, pass));
                 if (kh != null) {
                     request.setAttribute("message", "Login succeed as KhachHang");
                     request.getSession().setAttribute("KhachHangID", kh.getIdkhachhang());
