@@ -28,8 +28,7 @@ public class CartProduct extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ThuocDao thuocDao = new ThuocDao();
 			String idThuoc = req.getParameter("id");
-//			System.out.println("thuocId: " + idThuoc);
-			if (idThuoc != null && !idThuoc.isEmpty()) {
+			System.out.println("thuocId: " + idThuoc);
 			
 			String action=req.getParameter("action");
 			if (action != null && action.equals("minus")) {
@@ -47,7 +46,7 @@ public class CartProduct extends HttpServlet {
 				if (cartThuoc.containsKey(idThuoc) && cartThuoc.get(idThuoc) != null) {
 				    cartThuoc.get(idThuoc).setQuantity(cartThuoc.get(idThuoc).getQuantity() + 1);
 			
-				} else {
+				} else { 
 				    // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm sản phẩm vào giỏ hàng với số lượng là 1
 				    EntityManager em = JpaUtil.getEntityManager();
 				    Thuoc thuoc = em.find(Thuoc.class, idThuoc);
@@ -69,7 +68,6 @@ public class CartProduct extends HttpServlet {
 		if(uric.equals("removeFromCart")) {
 			removeProductFromCart(idThuoc);
 		}
-	}
 	}
 	
 
